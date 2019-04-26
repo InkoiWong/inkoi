@@ -1,5 +1,7 @@
 ## 检查 没被收录的 tutorial
 
+[TOC]
+
 [check-records.js](./check-records.js)
 
 ```

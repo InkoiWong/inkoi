@@ -1,0 +1,1 @@
+通过fs.writeFile方法写入的data

@@ -1,3 +1,6 @@
+/**
+ * 检查 没被收录的 tutorial
+ */
 const glob = require('glob')
 const fs = require('fs')
 const path = require('path')
