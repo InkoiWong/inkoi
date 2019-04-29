@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-form :form="form" style="max-width: 500px; margin: 40px auto 0;">
+    <a-form style="max-width: 500px; margin: 40px auto 0;">
       <a-alert
         :closable="true"
         message="确认转账后，资金将直接打入对方账户，无法退回。"
@@ -45,10 +45,7 @@
         :wrapperCol="wrapperCol"
         class="stepFormText"
       >
-        <a-input
-          type="password"
-          style="width: 80%;"
-          v-decorator="['paymentPassword', { initialValue: '123456', rules: [{required: true, message: '请输入支付密码'}] }]" />
+        <a-input type="password" style="width: 80%;" value="123456" />
       </a-form-item>
       <a-form-item :wrapperCol="{span: 19, offset: 5}">
         <a-button :loading="loading" type="primary" @click="nextStep">提交</a-button>
@@ -65,34 +62,21 @@ export default {
     return {
       labelCol: { lg: { span: 5 }, sm: { span: 5 } },
       wrapperCol: { lg: { span: 19 }, sm: { span: 19 } },
-      form: this.$form.createForm(this),
-      loading: false,
-      timer: 0
+
+      loading: false
     }
   },
   methods: {
     nextStep () {
       const that = this
-      const { form: { validateFields } } = this
       that.loading = true
-      validateFields((err, values) => {
-        if (!err) {
-          console.log('表单 values', values)
-          that.timer = setTimeout(function () {
-            that.loading = false
-            that.$emit('nextStep')
-          }, 1500)
-        } else {
-          that.loading = false
-        }
-      })
+      setTimeout(function () {
+        that.$emit('nextStep')
+      }, 1500)
     },
     prevStep () {
       this.$emit('prevStep')
     }
-  },
-  beforeDestroy () {
-    clearTimeout(this.timer)
   }
 }
 </script>

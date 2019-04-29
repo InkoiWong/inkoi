@@ -86,8 +86,8 @@ module.exports = {
   },
 
   devServer: {
-    // development server port 8002
-    port: 8002
+    // development server port 8001
+    port: 8001
     // proxy: {
     //   '/api': {
     //     // target: 'https://mock.ihx.me/mock/5baf3052f7da7e07e04a5116/antd-pro',
