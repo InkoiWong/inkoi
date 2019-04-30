@@ -70,7 +70,7 @@ vue create '项目名称'
   ( ) Vuex // 支持 vuex
   ( ) CSS Pre-processors // 支持 CSS 预处理器。
   ( ) Linter / Formatter // 支持代码风格检查和格式化。
-  ( ) Unit Testing // 支持单元测试。
+  ( ) Unit Testing // 支持单元测试。 https://vue-test-utils.vuejs.org/zh/
   ( ) E2E Testing
 
 > 4 是否使用路由的 history 模式

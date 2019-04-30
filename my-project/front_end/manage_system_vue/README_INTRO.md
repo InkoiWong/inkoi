@@ -1,6 +1,19 @@
+# 后台管理系统
+
+## 创建
+
+```
+npm install -g @vue/cli
+vue -V
+
+vue create manage_system_vue
+
+cnpm install --save ant-design-vue
+```
+
 ## 功能
 
-- [x] Ant Design Vue
+- [√] Ant Design Vue
 - [x] Element UI
 
 - [ ] 基础设置
