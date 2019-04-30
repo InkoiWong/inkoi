@@ -67,6 +67,15 @@
       "parser": "babel-eslint"
     },
     "rules": {
+      "array-bracket-newline": [
+        2,
+        {
+          "always": true,
+          "consistent": true,
+          "multiline": true,
+          "minItems": 2
+        }
+      ],
       "generator-star-spacing": "off",
       "no-mixed-operators": 0,
       "vue/max-attributes-per-line": [
