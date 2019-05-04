@@ -1,4 +1,4 @@
-const devServer = require('./vue-config/devServer.config')
+const devServer = require('./vue-config/devServer.config');
 // const mutiPageConfig = require('./multiPage.config')
 
 module.exports = {
@@ -222,4 +222,4 @@ module.exports = {
   pluginOptions: {
     // ...
   }
-}
+};
