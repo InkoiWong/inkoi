@@ -28,15 +28,15 @@ module.exports = {
     ]
   },
 
-  chainWebpack: (config) => {
+  chainWebpack: config => {
     config.resolve.alias
       .set('@$', resolve('src'))
-      .set('@api', resolve('src/api'))
-      .set('@assets', resolve('src/assets'))
-      .set('@comp', resolve('src/components'))
-      .set('@views', resolve('src/views'))
-      .set('@layout', resolve('src/layout'))
-      .set('@static', resolve('src/static'))
+      .set('@views', resolve('src/views')) // 路由
+      .set('@api', resolve('src/api')) // 接口
+      .set('@assets', resolve('src/assets')) // 资源
+      .set('@comp', resolve('src/components')) // 组件
+      .set('@layout', resolve('src/layout')) // 布局
+      .set('@static', resolve('src/static')) // 静态资源
 
     const svgRule = config.module.rule('svg')
     svgRule.uses.clear()
@@ -73,7 +73,6 @@ module.exports = {
       less: {
         modifyVars: {
           /* less 变量覆盖，用于自定义 ant design 主题 */
-
           /*
           'primary-color': '#F5222D',
           'link-color': '#F5222D',
