@@ -44,6 +44,17 @@ const store = new Vuex.Store({
 | multiTab       | boolean | true       | 多标签模式                                                             |
 | device         | string  | 'desktop'  | 设备：desktop、tablet、mobile                                          |
 
+`{ user }` 用户配置
+
+| params  | type   | default | intro    |
+| ------- | ------ | ------- | -------- |
+| token   | string | ''      | 登录标识 |
+| name    | string | ''      | 用户昵称 |
+| welcome | string | ''      | 欢迎语   |
+| avatar  | string | ''      | 用户头像 |
+| roles   | array  | []      | 用户权限 |
+| info    | object | {}      | 详情信息 |
+
 ## 映射功能
 
 ```es6

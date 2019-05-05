@@ -14,28 +14,17 @@ import {
 
 const app = {
   state: {
-    // 主题颜色
-    color: null,
-    // 菜单风格：dark 暗色模式 | light 亮色模式
-    theme: '',
-    // 整体布局方式： sidemenu 侧边栏导航模式 | topmenu 顶部栏导航模式
-    layout: '',
-    // 内容区布局（topmenu 顶部栏导航模式下才有效）： Fixed 固定 | Fluid 流式
-    contentWidth: '',
-    // 头部栏 固定
-    fixedHeader: false,
-    // 头部栏 向下滚动时，隐藏
-    autoHideHeader: false,
-    // 左侧菜单栏 显示/隐藏
-    sidebar: true,
-    // 左侧菜单栏 固定
-    fixSiderbar: false,
-    // 色盲模式
-    weak: false,
-    // 多标签模式
-    multiTab: true,
-    // 设备
-    device: 'desktop'
+    color: null, // 主题颜色
+    theme: '', // 菜单风格：dark 暗色模式 | light 亮色模式
+    layout: '', // 整体布局方式： sidemenu 侧边栏导航模式 | topmenu 顶部栏导航模式
+    contentWidth: '', // 内容区布局（topmenu 顶部栏导航模式下才有效）： Fixed 固定 | Fluid 流式
+    fixedHeader: false, // 头部栏 固定
+    autoHideHeader: false, // 头部栏 向下滚动时，隐藏
+    sidebar: true, // 左侧菜单栏 显示/隐藏
+    fixSiderbar: false, // 左侧菜单栏 固定
+    weak: false, // 色盲模式
+    multiTab: true, // 多标签模式
+    device: 'desktop' // 设备
   },
   mutations: {
     TOGGLE_COLOR: (state, color) => {
