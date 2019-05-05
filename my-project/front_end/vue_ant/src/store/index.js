@@ -11,14 +11,14 @@ import permission from './modules/permission'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  state: {},
+  getters,
+  mutations: {},
+  actions: {},
+
   modules: {
     app,
     user,
     permission
-  },
-
-  state: {},
-  getters,
-  mutations: {},
-  actions: {}
+  }
 })

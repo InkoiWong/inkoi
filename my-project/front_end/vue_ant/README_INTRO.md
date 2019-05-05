@@ -11,10 +11,39 @@ vue create manage_system_vue
 cnpm install --save ant-design-vue
 ```
 
-## 功能
+## 项目技术
 
-- [√] Ant Design Vue
-- [x] Element UI
+- UI 框架
+
+  - [√] Ant Design Vue
+
+- [ ] router [路由管理器](./src/router/index.js)
+
+  - [√] README [说明文档](./src/router/README.md)
+  - [√] router-map [路由地图](./src/router/router-map.js)
+    - [ ] constantRouterMap 基础路由
+    - [ ] asyncRouterMap
+  - [ ] hook [钩子函数]()
+
+- [ ] store 状态管理器
+
+  - [ ] README [说明文档](./src/store/README.md)
+
+- [ ] axios
+
+  - [ ] README [说明文档]()
+
+- [ ] layout 布局
+
+  - [ ] README [说明文档]()
+  - [√] UserLayout [用户登录注册相关页面布局](./src/layouts/UserLayout.vue)
+  - [√] BlankLayout [空白页面布局](./src/layouts/BlankLayout.vue)
+  - [√] BasicLayout [](./src/layouts/BasicLayout.vue)
+  - [√] RouteView [keep-alive 功能](./src/layouts/RouteView.vue)
+    > 相关文章：(https://www.jianshu.com/p/4b55d312d297)
+  - [√] PageView [](./src/layouts/PageView.vue)
+
+## 项目功能
 
 - [ ] 基础设置
 

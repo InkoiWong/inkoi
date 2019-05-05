@@ -2,7 +2,7 @@ import {
   UserLayout, // 用户登录注册相关页面布局
   BlankLayout, // 空白页面布局
   BasicLayout,
-  RouteView,
+  RouteView, // 判断是否在切换router是使用缓存组件功能
   PageView
 } from '@/layouts'
 import { bxAnaalyse } from '@/core/icons'
@@ -371,6 +371,7 @@ export const asyncRouterMap = [
       }
     ]
   },
+
   {
     path: '*',
     redirect: '/404',
