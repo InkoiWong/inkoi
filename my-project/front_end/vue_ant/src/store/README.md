@@ -9,6 +9,8 @@
 `{ actions }` 异步提交 mutation
 `{ modules }` 模块化状态数据库
 
+> `注意`如果不同模块下有`命名冲突`，需要加上 namespaced:true，然后调用时需要加入所属的模块名
+
 ```es6
 /**
  * main.js
@@ -54,6 +56,15 @@ const store = new Vuex.Store({
 | avatar  | string | ''      | 用户头像 |
 | roles   | array  | []      | 用户权限 |
 | info    | object | {}      | 详情信息 |
+
+`{ permission }` 权限配置
+
+| params     | type  | default | intro                       |
+| ---------- | ----- | ------- | --------------------------- |
+| routers    | array | []      | 根据权限-可访问路由表       |
+| addRouters | array | []      | 根据权限-菜单栏可显示路由表 |
+
+附权限路由结构：![权限结构](./../router/permissions.png)
 
 ## 映射功能
 

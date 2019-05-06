@@ -65,6 +65,8 @@ const user = {
             if (result.role && result.role.permissions.length > 0) {
               const role = result.role
               role.permissions = result.role.permissions
+
+              // 将每个 permission 中的 actionEntitySet.action 整合到 permission.actionList（操作权限）
               role.permissions.map(per => {
                 if (per.actionEntitySet != null && per.actionEntitySet.length > 0) {
                   const action = per.actionEntitySet.map(action => {
@@ -73,9 +75,16 @@ const user = {
                   per.actionList = action
                 }
               })
+
+              // 将每个 permission 的 permissionId 整合到 permissionList（菜单权限）
               role.permissionList = role.permissions.map(permission => {
                 return permission.permissionId
               })
+
+              // console.log('权限：', result.role)
+              // console.log('菜单权限：', result.role.permissionList)
+              // console.log('操作权限：', result.role.permission[i].actionList)
+
               commit('SET_ROLES', result.role)
               commit('SET_INFO', result)
             } else {

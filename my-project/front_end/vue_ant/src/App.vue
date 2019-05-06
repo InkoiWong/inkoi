@@ -1,6 +1,8 @@
 <template>
   <a-locale-provider :locale="locale">
     <div id="app">
+      <vue-progress-bar></vue-progress-bar>
+
       <router-view />
     </div>
   </a-locale-provider>
@@ -16,6 +18,17 @@ export default {
     return {
       locale: zhCN
     }
+  },
+
+  created () {
+    this.$router.beforeEach((to, from, next) => {
+      this.$Progress.start()
+      next()
+    })
+
+    this.$router.afterEach((to, from) => {
+      this.$Progress.finish()
+    })
   }
 }
 </script>

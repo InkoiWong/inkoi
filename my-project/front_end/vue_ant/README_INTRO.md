@@ -27,7 +27,7 @@ cnpm install --save ant-design-vue
 
 - [ ] store 状态管理器
 
-  - [ ] README [说明文档](./src/store/README.md)
+  - [√] README [说明文档](./src/store/README.md)
 
 - [ ] axios
 
@@ -38,7 +38,7 @@ cnpm install --save ant-design-vue
   - [ ] README [说明文档]()
   - [√] UserLayout [用户登录注册相关页面布局](./src/layouts/UserLayout.vue)
   - [√] BlankLayout [空白页面布局](./src/layouts/BlankLayout.vue)
-  - [√] BasicLayout [](./src/layouts/BasicLayout.vue)
+  - [√] BasicLayout [基础页面布局](./src/layouts/BasicLayout.vue)
   - [√] RouteView [keep-alive 功能](./src/layouts/RouteView.vue)
     > 相关文章：(https://www.jianshu.com/p/4b55d312d297)
   - [√] PageView [](./src/layouts/PageView.vue)
@@ -47,7 +47,17 @@ cnpm install --save ant-design-vue
 
 - [ ] 基础设置
 
+  - [√] Title [页面标题控制](./src/utils/domUtil.js)
   - [ ] Transition 页面切换过渡 (Ant√)
+
+- [ ] 权限管理
+
+  - [ ] router [权限功能控制](./src/permission.js)
+    - [ ] 动态添加可访问路由表
+    - [ ] Action 权限指令
+  - [ ] store [权限功能管理](./src/store/permission.js)
+
+## 项目结构
 
 - [ ] 用户账号
 
