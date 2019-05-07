@@ -49,6 +49,8 @@ cnpm install --save ant-design-vue
 
   - [√] Title [页面标题控制](./src/utils/domUtil.js)
   - [ ] Transition 页面切换过渡 (Ant√)
+    - [ ] 骨架屏
+    - [ ] progressbar
 
 - [ ] 权限管理
 

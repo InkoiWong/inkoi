@@ -2,38 +2,12 @@ import Vue from 'vue'
 import router from './router'
 import store from './store'
 
-import VueProgressBar from 'vue-progressbar'
 // import NProgress from 'nprogress' // progress bar
 // import 'nprogress/nprogress.css' // progress bar style
 
 import notification from 'ant-design-vue/es/notification'
 import { setDocumentTitle, documentBaseTitle } from '@/utils/domUtil'
 import { ACCESS_TOKEN } from '@/store/mutation-types'
-
-const options = {
-  // 颜色
-  color: '#EDBB79',
-  // 加载失败颜色
-  failedColor: 'red',
-  // 厚度
-  thickness: '2px',
-  // 动画
-  transition: {
-    speed: '0.2s',
-    opacity: '0.6s',
-    termination: 300
-  },
-  // 自动还原
-  autoRevert: true,
-  // 进度条位置
-  location: 'top',
-  // 反转进度条的方向
-  inverse: false,
-  // 允许进度条在接近100％时自动完成
-  autoFinish: false
-}
-
-Vue.use(VueProgressBar, options)
 
 // NProgress Configuration
 // NProgress.inc(0.2)
