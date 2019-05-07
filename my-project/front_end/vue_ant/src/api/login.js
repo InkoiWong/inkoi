@@ -1,5 +1,5 @@
 import api from './index'
-import { axios } from '@/utils/request'
+import { axios } from '@/axios/request'
 
 /**
  * login func

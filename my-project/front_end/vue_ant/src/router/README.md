@@ -91,4 +91,4 @@ const routerMap = [
 > 2.  增加新的路由应该增加在 '/' (index) 路由的 `children` 内
 > 3.  `permission` 可以进行自定义修改，只需要对这个模块进行自定义修改即可 [src/store/modules/permission.js#L10](https://github.com/sendya/ant-design-pro-vue/blob/master/src/store/modules/permission.js#L10)
 
-附权限路由结构：![权限结构](./permissions.png)
+附权限路由结构：![权限结构](./../../docs/permissions.png)

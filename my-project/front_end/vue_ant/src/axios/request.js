@@ -1,13 +1,9 @@
 import Vue from 'vue'
 import axios from 'axios'
 import store from '@/store'
-import {
-  VueAxios
-} from './axios'
+import { VueAxios } from './axios'
 import notification from 'ant-design-vue/es/notification'
-import {
-  ACCESS_TOKEN
-} from '@/store/mutation-types'
+import { ACCESS_TOKEN } from '@/store/mutation-types'
 
 // 创建 axios 实例
 const service = axios.create({
@@ -15,7 +11,7 @@ const service = axios.create({
   timeout: 6000 // 请求超时时间
 })
 
-const err = (error) => {
+const err = error => {
   if (error.response) {
     const data = error.response.data
     const token = Vue.ls.get(ACCESS_TOKEN)
@@ -52,7 +48,7 @@ service.interceptors.request.use(config => {
 }, err)
 
 // response interceptor
-service.interceptors.response.use((response) => {
+service.interceptors.response.use(response => {
   return response.data
 }, err)
 
@@ -63,7 +59,4 @@ const installer = {
   }
 }
 
-export {
-  installer as VueAxios,
-  service as axios
-}
+export { installer as VueAxios, service as axios }

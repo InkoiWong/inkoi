@@ -64,7 +64,7 @@ const store = new Vuex.Store({
 | routers    | array | []      | 根据权限-可访问路由表       |
 | addRouters | array | []      | 根据权限-菜单栏可显示路由表 |
 
-附权限路由结构：![权限结构](./../router/permissions.png)
+附权限路由结构：![权限结构](./../../docs/permissions.png)
 
 ## 映射功能
 

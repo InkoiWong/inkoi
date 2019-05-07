@@ -21,9 +21,9 @@ cnpm install --save ant-design-vue
 
   - [√] README [说明文档](./src/router/README.md)
   - [√] router-map [路由地图](./src/router/router-map.js)
-    - [ ] constantRouterMap 基础路由
-    - [ ] asyncRouterMap
-  - [ ] hook [钩子函数]()
+    - [√] constantRouterMap 基础路由
+    - [√] asyncRouterMap 动态路由
+  - [√] hook [钩子函数](./src/permission.js)
 
 - [ ] store 状态管理器
 
@@ -31,7 +31,7 @@ cnpm install --save ant-design-vue
 
 - [ ] axios
 
-  - [ ] README [说明文档]()
+  - [ ] README [说明文档](./src/axios/README.md)
 
 - [ ] layout 布局
 
@@ -41,7 +41,7 @@ cnpm install --save ant-design-vue
   - [√] BasicLayout [基础页面布局](./src/layouts/BasicLayout.vue)
   - [√] RouteView [keep-alive 功能](./src/layouts/RouteView.vue)
     > 相关文章：(https://www.jianshu.com/p/4b55d312d297)
-  - [√] PageView [](./src/layouts/PageView.vue)
+  - [√] PageView [内容区域](./src/layouts/PageView.vue)
 
 ## 项目功能
 
@@ -49,15 +49,17 @@ cnpm install --save ant-design-vue
 
   - [√] Title [页面标题控制](./src/utils/domUtil.js)
   - [ ] Transition 页面切换过渡 (Ant√)
+    - [√] progressbar [页面进度动画插件](./docs/progressbar.md)
+      - [√] vue-progressbar
+      - [×] nprogress
     - [ ] 骨架屏
-    - [ ] progressbar
 
 - [ ] 权限管理
 
-  - [ ] router [权限功能控制](./src/permission.js)
-    - [ ] 动态添加可访问路由表
-    - [ ] Action 权限指令
-  - [ ] store [权限功能管理](./src/store/permission.js)
+  - [√] router [权限功能控制](./src/permission.js)
+    - [√] 动态添加可访问路由表
+    - [√] Action 权限指令
+  - [√] store [权限功能管理](./src/store/permission.js)
 
 ## 项目结构
 

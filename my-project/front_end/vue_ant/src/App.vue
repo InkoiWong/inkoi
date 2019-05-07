@@ -26,26 +26,7 @@ export default {
   created () {
     this.VueProgressBarColor = this.$store.getters.color
     Vue.use(VueProgressBar, {
-      // 颜色
-      color: this.VueProgressBarColor,
-      // 加载失败颜色
-      failedColor: 'red',
-      // 厚度
-      thickness: '2px',
-      // 动画
-      transition: {
-        speed: '0.2s',
-        opacity: '0.6s',
-        termination: 300
-      },
-      // 自动还原
-      autoRevert: true,
-      // 进度条位置
-      location: 'top',
-      // 反转进度条的方向
-      inverse: false,
-      // 允许进度条在接近100％时自动完成
-      autoFinish: false
+      color: this.VueProgressBarColor
     })
     this.$router.beforeEach((to, from, next) => {
       this.$Progress.start()
