@@ -5,11 +5,13 @@ import { VueAxios } from './axios'
 import notification from 'ant-design-vue/es/notification'
 import { ACCESS_TOKEN } from '@/store/mutation-types'
 
+// 设置axios请求的默认配置（接口的参数继承默认配置）
+axios.defaults.baseURL = '/api'
+axios.defaults.timeout = 5000 // 请求超时时间
+axios.defaults.headers['get']['Content-Type'] = 'application/json;charset=UTF-8'
+
 // 创建 axios 实例
-const service = axios.create({
-  baseURL: '/api', // api base_url
-  timeout: 6000 // 请求超时时间
-})
+const service = axios.create()
 
 const err = error => {
   if (error.response) {

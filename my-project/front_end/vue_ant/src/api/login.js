@@ -1,5 +1,12 @@
-import api from './index'
 import { axios } from '@/axios/request'
+
+const api = {
+  Login: '/auth/login',
+  Logout: '/auth/logout',
+  twoStepCode: '/auth/2step-code',
+  SendSms: '/account/sms',
+  UserInfo: '/user/info'
+}
 
 /**
  * login func
@@ -13,39 +20,19 @@ import { axios } from '@/axios/request'
  * @returns {*}
  */
 export function login (parameter) {
-  return axios({
-    url: '/auth/login',
-    method: 'post',
-    data: parameter
-  })
+  return axios.post(api.Login, parameter)
 }
 
 export function getSmsCaptcha (parameter) {
-  return axios({
-    url: api.SendSms,
-    method: 'post',
-    data: parameter
-  })
+  return axios.post(api.SendSms, parameter)
 }
 
 export function getInfo () {
-  return axios({
-    url: '/user/info',
-    method: 'get',
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    }
-  })
+  return axios.get(api.UserInfo)
 }
 
 export function logout () {
-  return axios({
-    url: '/auth/logout',
-    method: 'post',
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    }
-  })
+  return axios.post(api.Logout)
 }
 
 /**
