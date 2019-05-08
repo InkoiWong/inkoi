@@ -17,6 +17,8 @@ const whiteList = ['login', 'register', 'registerResult'] // no redirect whiteli
 
 router.beforeEach((to, from, next) => {
   // NProgress.start() // start progress bar
+
+  // 设置页面标题
   to.meta && (typeof to.meta.title !== 'undefined' && setDocumentTitle(`${to.meta.title} - ${documentBaseTitle}`))
 
   if (Vue.ls.get(ACCESS_TOKEN)) {

@@ -14,27 +14,22 @@ cnpm install --save ant-design-vue
 ## 项目技术
 
 - UI 框架
-
   - [√] Ant Design Vue
-
-- [ ] router [路由管理器](./src/router/index.js)
-
+- router
   - [√] README [说明文档](./src/router/README.md)
+  - [√] router [路由管理器](./src/router/index.js)
   - [√] router-map [路由地图](./src/router/router-map.js)
     - [√] constantRouterMap 基础路由
     - [√] asyncRouterMap 动态路由
   - [√] hook [钩子函数](./src/permission.js)
-
-- [ ] store 状态管理器
-
+- store
   - [√] README [说明文档](./src/store/README.md)
-
-- [ ] axios
-
+  - [√] store [状态管理器](./src/store/index.js)
+- axios
   - [ ] README [说明文档](./src/axios/README.md)
-
-- [ ] layout 布局
-
+  - [√] axios [封装](./src/axios/index.js)
+  - [√] request [拦截器](./src/axios/request.js)
+- layout 布局
   - [ ] README [说明文档]()
   - [√] UserLayout [用户登录注册相关页面布局](./src/layouts/UserLayout.vue)
   - [√] BlankLayout [空白页面布局](./src/layouts/BlankLayout.vue)
@@ -45,17 +40,14 @@ cnpm install --save ant-design-vue
 
 ## 项目功能
 
-- [ ] 基础设置
-
+- 基础设置
   - [√] Title [页面标题控制](./src/utils/domUtil.js)
   - [ ] Transition 页面切换过渡 (Ant√)
     - [√] progressbar [页面进度动画插件](./docs/progressbar.md)
       - [√] vue-progressbar
       - [×] nprogress
     - [ ] 骨架屏
-
-- [ ] 权限管理
-
+- 权限管理
   - [√] router [权限功能控制](./src/permission.js)
     - [√] 动态添加可访问路由表
     - [√] Action 权限指令

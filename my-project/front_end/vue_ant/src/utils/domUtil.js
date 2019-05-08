@@ -1,3 +1,4 @@
+// 设置页面标题
 export const setDocumentTitle = function (title) {
   document.title = title
   const ua = navigator.userAgent
@@ -16,4 +17,5 @@ export const setDocumentTitle = function (title) {
   }
 }
 
+// 基础页面标题
 export const documentBaseTitle = 'Ant Design Pro'
