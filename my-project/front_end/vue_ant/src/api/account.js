@@ -4,6 +4,8 @@ const api = {
   SendSms: '/account/sms'
 }
 
-export function getSmsCaptcha (params) {
-  return axios.post(api.SendSms, params)
+export function getSmsCaptcha (parameter) {
+  return axios.post(api.SendSms, {
+    data: parameter
+  })
 }

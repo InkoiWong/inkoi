@@ -46,7 +46,7 @@ export default {
   },
   beforeCreate () {
     this.form = this.$form.createForm(this)
-    console.log('form::', this.form)
+    // console.log('form::', this.form)
   },
   created () {
 

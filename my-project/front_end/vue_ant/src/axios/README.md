@@ -53,6 +53,10 @@ Vue.use(VueAxios)
 ## 五、全局使用
 
 ```js
-this.$axios.get(api, params)
-this.$axios.post(api, params)
+this.$axios.get(api, {
+  params: parameter
+})
+this.$axios.post(api, {
+  data: parameter
+})
 ```

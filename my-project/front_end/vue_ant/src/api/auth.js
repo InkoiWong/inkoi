@@ -8,23 +8,27 @@ const api = {
 
 /**
  * login func
- * params: {
+ * parameter: {
  *     username: '',
  *     password: '',
  *     remember_me: true,
  *     captcha: '12345'
  * }
- * @param params
+ * @param parameter
  * @returns {*}
  */
-export function login (params) {
-  return axios.post(api.Login, params)
+export function login (parameter) {
+  return axios.post(api.Login, {
+    data: parameter
+  })
 }
 
 export function logout () {
   return axios.post(api.Logout)
 }
 
-export function get2step (params) {
-  return axios.post(api.twoStepCode, params)
+export function get2step (parameter) {
+  return axios.post(api.twoStepCode, {
+    data: parameter
+  })
 }

@@ -15,6 +15,7 @@ const VueAxios = {
 
     Vue.axios = instance
 
+    // 封装并发布到全局
     Object.defineProperties(Vue.prototype, {
       $axios: {
         get: function get () {
