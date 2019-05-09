@@ -21,6 +21,7 @@ export function logout() {
 
 ## 二、api-map
 
-- 权限 [auth](./auth.js)
-- 用户 [user](./user.js)
-- 账号 [account](./account.js)
+- 权限 [auth](./modules/auth.js)
+- 用户 [user](./modules/user.js)
+- 账号 [account](./modules/account.js)
+- 数据树 [org](./modules/org.js)

@@ -15,14 +15,20 @@
         </template>
         <span slot="description">This is a description.</span>
       </a-step>
-      <a-step title="In Progress" description="This is a description." />
-      <a-step title="Waiting" description="This is a description." />
+      <a-step
+        title="In Progress"
+        description="This is a description."
+      />
+      <a-step
+        title="Waiting"
+        description="This is a description."
+      />
     </a-steps>
   </a-modal>
 </template>
 
 <script>
-import { getPermissions } from '@/api/manage'
+import { getPermissions } from '@/api/modules/permission'
 import { actionToObject } from '@/utils/permissions'
 import pick from 'lodash.pick'
 
@@ -143,5 +149,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

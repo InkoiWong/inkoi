@@ -31,7 +31,7 @@ cnpm install --save ant-design-vue
   - [√] axios [封装](./src/axios/index.js)
   - [√] request [拦截器](./src/axios/request.js)
 - API 接口管理
-  - [√] README [说明文档](./src/api/README.md)
+  - [√] README [说明文档](./src/api/modules/README.md)
 - layout 布局
   - [ ] README [说明文档]()
   - [√] UserLayout [用户登录注册相关页面布局](./src/layouts/UserLayout.vue)

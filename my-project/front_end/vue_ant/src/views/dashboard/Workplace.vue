@@ -196,7 +196,8 @@ import { PageView } from '@/layouts'
 import HeadInfo from '@/components/tools/HeadInfo'
 import { Radar } from '@/components'
 
-import { getRoleList, getServiceList } from '@/api/manage'
+import { getRoleList } from '@/api/modules/role'
+import { getServiceList } from '@/api/modules/service'
 
 const DataSet = require('@antv/data-set')
 

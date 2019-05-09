@@ -3,21 +3,33 @@
     <div class="table-page-search-wrapper">
       <a-form layout="inline">
         <a-row :gutter="48">
-          <a-col :md="8" :sm="24">
+          <a-col
+            :md="8"
+            :sm="24"
+          >
             <a-form-item label="角色ID">
-              <a-input placeholder="请输入"/>
+              <a-input placeholder="请输入" />
             </a-form-item>
           </a-col>
-          <a-col :md="8" :sm="24">
+          <a-col
+            :md="8"
+            :sm="24"
+          >
             <a-form-item label="状态">
-              <a-select placeholder="请选择" default-value="0">
+              <a-select
+                placeholder="请选择"
+                default-value="0"
+              >
                 <a-select-option value="0">全部</a-select-option>
                 <a-select-option value="1">关闭</a-select-option>
                 <a-select-option value="2">运行中</a-select-option>
               </a-select>
             </a-form-item>
           </a-col>
-          <a-col :md="8" :sm="24">
+          <a-col
+            :md="8"
+            :sm="24"
+          >
             <span class="table-page-search-submitButtons">
               <a-button type="primary">查询</a-button>
               <a-button style="margin-left: 8px">重置</a-button>
@@ -35,27 +47,52 @@
       <div
         slot="expandedRowRender"
         slot-scope="record"
-        style="margin: 0">
+        style="margin: 0"
+      >
         <a-row
           :gutter="24"
-          :style="{ marginBottom: '12px' }">
-          <a-col :span="12" v-for="(role, index) in record.permissions" :key="index" :style="{ marginBottom: '12px' }">
-            <a-col :lg="4" :md="24">
+          :style="{ marginBottom: '12px' }"
+        >
+          <a-col
+            :span="12"
+            v-for="(role, index) in record.permissions"
+            :key="index"
+            :style="{ marginBottom: '12px' }"
+          >
+            <a-col
+              :lg="4"
+              :md="24"
+            >
               <span>{{ role.permissionName }}：</span>
             </a-col>
-            <a-col :lg="20" :md="24" v-if="role.actionEntitySet.length > 0">
-              <a-tag color="cyan" v-for="(action, k) in role.actionEntitySet" :key="k">{{ action.describe }}</a-tag>
+            <a-col
+              :lg="20"
+              :md="24"
+              v-if="role.actionEntitySet.length > 0"
+            >
+              <a-tag
+                color="cyan"
+                v-for="(action, k) in role.actionEntitySet"
+                :key="k"
+              >{{ action.describe }}</a-tag>
             </a-col>
-            <a-col :span="20" v-else>-</a-col>
+            <a-col
+              :span="20"
+              v-else
+            >-</a-col>
           </a-col>
         </a-row>
       </div>
-      <span slot="action" slot-scope="text, record">
+      <span
+        slot="action"
+        slot-scope="text, record"
+      >
         <a @click="handleEdit(record)">编辑</a>
         <a-divider type="vertical" />
         <a-dropdown>
           <a class="ant-dropdown-link">
-            更多 <a-icon type="down" />
+            更多
+            <a-icon type="down" />
           </a>
           <a-menu slot="overlay">
             <a-menu-item>
@@ -88,7 +125,12 @@
           hasFeedback
           validateStatus="success"
         >
-          <a-input placeholder="唯一识别码" v-model="mdl.id" id="no" disabled="disabled" />
+          <a-input
+            placeholder="唯一识别码"
+            v-model="mdl.id"
+            id="no"
+            disabled="disabled"
+          />
         </a-form-item>
 
         <a-form-item
@@ -98,7 +140,11 @@
           hasFeedback
           validateStatus="success"
         >
-          <a-input placeholder="起一个名字" v-model="mdl.name" id="role_name" />
+          <a-input
+            placeholder="起一个名字"
+            v-model="mdl.name"
+            id="role_name"
+          />
         </a-form-item>
 
         <a-form-item
@@ -120,7 +166,12 @@
           label="描述"
           hasFeedback
         >
-          <a-textarea :rows="5" v-model="mdl.describe" placeholder="..." id="describe"/>
+          <a-textarea
+            :rows="5"
+            v-model="mdl.describe"
+            placeholder="..."
+            id="describe"
+          />
         </a-form-item>
 
         <a-divider />
@@ -131,12 +182,16 @@
           label="拥有权限"
           hasFeedback
         >
-          <a-row :gutter="16" v-for="(permission, index) in mdl.permissions" :key="index">
+          <a-row
+            :gutter="16"
+            v-for="(permission, index) in mdl.permissions"
+            :key="index"
+          >
             <a-col :span="4">
               {{ permission.permissionName }}：
             </a-col>
             <a-col :span="20">
-              <a-checkbox-group :options="permission.actionsOptions"/>
+              <a-checkbox-group :options="permission.actionsOptions" />
             </a-col>
           </a-row>
 
@@ -150,7 +205,8 @@
 
 <script>
 import { STable } from '@/components'
-import { getRoleList, getServiceList } from '@/api/manage'
+import { getRoleList } from '@/api/modules/role'
+import { getServiceList } from '@/api/modules/service'
 
 export default {
   name: 'TableList',

@@ -235,7 +235,7 @@ export default {
       ],
       // 加载数据方法 必须为 Promise 对象
       loadData: parameter => {
-        return this.$axios.get('/service', {
+        return this.$axios.get('/service/list', {
           params: Object.assign(parameter, this.queryParam)
         }).then(res => {
           return res.result
