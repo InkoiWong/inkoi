@@ -3,21 +3,33 @@
     <div class="table-page-search-wrapper">
       <a-form layout="inline">
         <a-row :gutter="48">
-          <a-col :md="8" :sm="24">
+          <a-col
+            :md="8"
+            :sm="24"
+          >
             <a-form-item label="角色ID">
-              <a-input placeholder="请输入"/>
+              <a-input placeholder="请输入" />
             </a-form-item>
           </a-col>
-          <a-col :md="8" :sm="24">
+          <a-col
+            :md="8"
+            :sm="24"
+          >
             <a-form-item label="状态">
-              <a-select placeholder="请选择" default-value="0">
+              <a-select
+                placeholder="请选择"
+                default-value="0"
+              >
                 <a-select-option value="0">全部</a-select-option>
                 <a-select-option value="1">正常</a-select-option>
                 <a-select-option value="2">禁用</a-select-option>
               </a-select>
             </a-form-item>
           </a-col>
-          <a-col :md="8" :sm="24">
+          <a-col
+            :md="8"
+            :sm="24"
+          >
             <span class="table-page-search-submitButtons">
               <a-button type="primary">查询</a-button>
               <a-button style="margin-left: 8px">重置</a-button>
@@ -36,27 +48,48 @@
       <div
         slot="expandedRowRender"
         slot-scope="record"
-        style="margin: 0">
+        style="margin: 0"
+      >
         <a-row
           :gutter="24"
-          :style="{ marginBottom: '12px' }">
-          <a-col :span="12" v-for="(role, index) in record.permissions" :key="index" :style="{ marginBottom: '12px' }">
+          :style="{ marginBottom: '12px' }"
+        >
+          <a-col
+            :span="12"
+            v-for="(role, index) in record.permissions"
+            :key="index"
+            :style="{ marginBottom: '12px' }"
+          >
             <a-col :span="4">
               <span>{{ role.permissionName }}：</span>
             </a-col>
-            <a-col :span="20" v-if="role.actionEntitySet.length > 0">
-              <a-tag color="cyan" v-for="(action, k) in role.actionEntitySet" :key="k">{{ action.describe }}</a-tag>
+            <a-col
+              :span="20"
+              v-if="role.actionEntitySet.length > 0"
+            >
+              <a-tag
+                color="cyan"
+                v-for="(action, k) in role.actionEntitySet"
+                :key="k"
+              >{{ action.describe }}</a-tag>
             </a-col>
-            <a-col :span="20" v-else>-</a-col>
+            <a-col
+              :span="20"
+              v-else
+            >-</a-col>
           </a-col>
         </a-row>
       </div>
-      <span slot="action" slot-scope="text, record">
+      <span
+        slot="action"
+        slot-scope="text, record"
+      >
         <a @click="$refs.modal.edit(record)">编辑</a>
         <a-divider type="vertical" />
         <a-dropdown>
           <a class="ant-dropdown-link">
-            更多 <a-icon type="down" />
+            更多
+            <a-icon type="down" />
           </a>
           <a-menu slot="overlay">
             <a-menu-item>
@@ -73,7 +106,10 @@
       </span>
     </s-table>
 
-    <role-modal ref="modal" @ok="handleOk"></role-modal>
+    <role-modal
+      ref="modal"
+      @ok="handleOk"
+    ></role-modal>
 
   </a-card>
 </template>
@@ -128,7 +164,7 @@ export default {
       ],
       // 加载数据方法 必须为 Promise 对象
       loadData: parameter => {
-        return this.$http.get('/role', {
+        return this.$axios.get('/role', {
           params: Object.assign(parameter, this.queryParam)
         }).then(res => {
           return res.result

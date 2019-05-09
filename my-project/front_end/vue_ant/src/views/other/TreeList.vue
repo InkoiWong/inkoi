@@ -8,7 +8,8 @@
           :search="true"
           @click="handleClick"
           @add="handleAdd"
-          @titleClick="handleTitleClick"></s-tree>
+          @titleClick="handleTitleClick"
+        ></s-tree>
       </a-col>
       <a-col :span="19">
         <s-table
@@ -19,14 +20,18 @@
           :alert="false"
           :rowSelection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
         >
-          <span slot="action" slot-scope="text, record">
+          <span
+            slot="action"
+            slot-scope="text, record"
+          >
             <template v-if="$auth('table.update')">
               <a @click="handleEdit(record)">编辑</a>
               <a-divider type="vertical" />
             </template>
             <a-dropdown>
               <a class="ant-dropdown-link">
-                更多 <a-icon type="down" />
+                更多
+                <a-icon type="down" />
               </a>
               <a-menu slot="overlay">
                 <a-menu-item>
@@ -45,7 +50,11 @@
       </a-col>
     </a-row>
 
-    <org-modal ref="modal" @ok="handleSaveOk" @close="handleSaveClose" />
+    <org-modal
+      ref="modal"
+      @ok="handleSaveOk"
+      @close="handleSaveClose"
+    />
   </a-card>
 </template>
 
@@ -53,7 +62,8 @@
 import STree from '@/components/Tree/Tree'
 import { STable } from '@/components'
 import OrgModal from './modules/OrgModal'
-import { getOrgTree, getServiceList } from '@/api/manage'
+import { getOrgTree } from '@/api/org'
+import { getServiceList } from '@/api/manage'
 
 export default {
   name: 'TreeList',
@@ -154,39 +164,38 @@ export default {
 </script>
 
 <style lang="less">
-  .custom-tree {
-
-    /deep/ .ant-menu-item-group-title {
-      position: relative;
-      &:hover {
-        .btn {
-          display: block;
-        }
-      }
-    }
-
-    /deep/ .ant-menu-item {
-      &:hover {
-        .btn {
-          display: block;
-        }
-      }
-    }
-
-    /deep/ .btn {
-      display: none;
-      position: absolute;
-      top: 0;
-      right: 10px;
-      width: 20px;
-      height: 40px;
-      line-height: 40px;
-      z-index: 1050;
-
-      &:hover {
-        transform: scale(1.2);
-        transition: 0.5s all;
+.custom-tree {
+  /deep/ .ant-menu-item-group-title {
+    position: relative;
+    &:hover {
+      .btn {
+        display: block;
       }
     }
   }
+
+  /deep/ .ant-menu-item {
+    &:hover {
+      .btn {
+        display: block;
+      }
+    }
+  }
+
+  /deep/ .btn {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    width: 20px;
+    height: 40px;
+    line-height: 40px;
+    z-index: 1050;
+
+    &:hover {
+      transform: scale(1.2);
+      transition: 0.5s all;
+    }
+  }
+}
 </style>

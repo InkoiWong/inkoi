@@ -18,7 +18,7 @@ import './utils/filter' // global filter
 
 Vue.config.productionTip = false
 
-// mount axios Vue.$http and this.$http
+// mount axios Vue.$axios and this.$axios
 Vue.use(VueAxios)
 
 new Vue({

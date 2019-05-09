@@ -1,8 +1,18 @@
 <template>
   <div>
-    <a-card :bordered="false" class="ant-pro-components-tag-select">
-      <a-form :form="form" layout="inline">
-        <standard-form-row title="所属类目" block style="padding-bottom: 11px;">
+    <a-card
+      :bordered="false"
+      class="ant-pro-components-tag-select"
+    >
+      <a-form
+        :form="form"
+        layout="inline"
+      >
+        <standard-form-row
+          title="所属类目"
+          block
+          style="padding-bottom: 11px;"
+        >
           <a-form-item>
             <tag-select>
               <tag-select-option value="Category1">类目一</tag-select-option>
@@ -19,10 +29,22 @@
           </a-form-item>
         </standard-form-row>
 
-        <standard-form-row title="其它选项" grid last>
+        <standard-form-row
+          title="其它选项"
+          grid
+          last
+        >
           <a-row>
-            <a-col :lg="8" :md="10" :sm="10" :xs="24">
-              <a-form-item :wrapper-col="{ sm: { span: 16 }, xs: { span: 24 } }" label="作者">
+            <a-col
+              :lg="8"
+              :md="10"
+              :sm="10"
+              :xs="24"
+            >
+              <a-form-item
+                :wrapper-col="{ sm: { span: 16 }, xs: { span: 24 } }"
+                label="作者"
+              >
                 <a-select
                   style="max-width: 200px; width: 100%;"
                   mode="multiple"
@@ -34,8 +56,16 @@
                 </a-select>
               </a-form-item>
             </a-col>
-            <a-col :lg="8" :md="10" :sm="10" :xs="24">
-              <a-form-item :wrapper-col="{ sm: { span: 16 }, xs: { span: 24 } }" label="好评度">
+            <a-col
+              :lg="8"
+              :md="10"
+              :sm="10"
+              :xs="24"
+            >
+              <a-form-item
+                :wrapper-col="{ sm: { span: 16 }, xs: { span: 24 } }"
+                label="好评度"
+              >
                 <a-select
                   style="max-width: 200px; width: 100%;"
                   placeholder="不限"
@@ -52,10 +82,24 @@
     </a-card>
 
     <div class="ant-pro-pages-list-projects-cardList">
-      <a-list :loading="loading" :data-source="data" :grid="{ gutter: 24, xl: 4, lg: 3, md: 3, sm: 2, xs: 1 }">
-        <a-list-item slot="renderItem" slot-scope="item">
-          <a-card class="ant-pro-pages-list-projects-card" hoverable>
-            <img slot="cover" :src="item.cover" :alt="item.title" />
+      <a-list
+        :loading="loading"
+        :data-source="data"
+        :grid="{ gutter: 24, xl: 4, lg: 3, md: 3, sm: 2, xs: 1 }"
+      >
+        <a-list-item
+          slot="renderItem"
+          slot-scope="item"
+        >
+          <a-card
+            class="ant-pro-pages-list-projects-card"
+            hoverable
+          >
+            <img
+              slot="cover"
+              :src="item.cover"
+              :alt="item.title"
+            />
             <a-card-meta :title="item.title">
               <template slot="description">
                 <ellipsis :length="50">{{ item.description }}</ellipsis>
@@ -116,7 +160,7 @@ export default {
       console.log(`selected ${value}`)
     },
     getList () {
-      this.$http.get('/list/article', { params: { count: 8 } }).then(res => {
+      this.$axios.get('/list/article', { params: { count: 8 } }).then(res => {
         console.log('res', res)
         this.data = res.result
         this.loading = false
@@ -156,7 +200,7 @@ export default {
 
     > span {
       flex: 1 1;
-      color: rgba(0,0,0,.45);
+      color: rgba(0, 0, 0, 0.45);
       font-size: 12px;
     }
 

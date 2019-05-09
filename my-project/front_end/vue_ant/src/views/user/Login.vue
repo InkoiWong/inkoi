@@ -12,7 +12,10 @@
         :tabBarStyle="{ textAlign: 'center', borderBottom: 'unset' }"
         @change="handleTabClick"
       >
-        <a-tab-pane key="tab1" tab="账号密码登录">
+        <a-tab-pane
+          key="tab1"
+          tab="账号密码登录"
+        >
           <a-form-item>
             <a-input
               size="large"
@@ -23,7 +26,11 @@
                 {rules: [{ required: true, message: '请输入帐户名或邮箱地址' }, { validator: handleUsernameOrEmail }], validateTrigger: 'change'}
               ]"
             >
-              <a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)' }"/>
+              <a-icon
+                slot="prefix"
+                type="user"
+                :style="{ color: 'rgba(0,0,0,.25)' }"
+              />
             </a-input>
           </a-form-item>
 
@@ -38,26 +45,57 @@
                 {rules: [{ required: true, message: '请输入密码' }], validateTrigger: 'blur'}
               ]"
             >
-              <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
+              <a-icon
+                slot="prefix"
+                type="lock"
+                :style="{ color: 'rgba(0,0,0,.25)' }"
+              />
             </a-input>
           </a-form-item>
         </a-tab-pane>
-        <a-tab-pane key="tab2" tab="手机号登录">
+        <a-tab-pane
+          key="tab2"
+          tab="手机号登录"
+        >
           <a-form-item>
-            <a-input size="large" type="text" placeholder="手机号" v-decorator="['mobile', {rules: [{ required: true, pattern: /^1[34578]\d{9}$/, message: '请输入正确的手机号' }], validateTrigger: 'change'}]">
-              <a-icon slot="prefix" type="mobile" :style="{ color: 'rgba(0,0,0,.25)' }"/>
+            <a-input
+              size="large"
+              type="text"
+              placeholder="手机号"
+              v-decorator="['mobile', {rules: [{ required: true, pattern: /^1[34578]\d{9}$/, message: '请输入正确的手机号' }], validateTrigger: 'change'}]"
+            >
+              <a-icon
+                slot="prefix"
+                type="mobile"
+                :style="{ color: 'rgba(0,0,0,.25)' }"
+              />
             </a-input>
           </a-form-item>
 
           <a-row :gutter="16">
-            <a-col class="gutter-row" :span="16">
+            <a-col
+              class="gutter-row"
+              :span="16"
+            >
               <a-form-item>
-                <a-input size="large" type="text" placeholder="验证码" v-decorator="['captcha', {rules: [{ required: true, message: '请输入验证码' }], validateTrigger: 'blur'}]">
-                  <a-icon slot="prefix" type="mail" :style="{ color: 'rgba(0,0,0,.25)' }"/>
+                <a-input
+                  size="large"
+                  type="text"
+                  placeholder="验证码"
+                  v-decorator="['captcha', {rules: [{ required: true, message: '请输入验证码' }], validateTrigger: 'blur'}]"
+                >
+                  <a-icon
+                    slot="prefix"
+                    type="mail"
+                    :style="{ color: 'rgba(0,0,0,.25)' }"
+                  />
                 </a-input>
               </a-form-item>
             </a-col>
-            <a-col class="gutter-row" :span="8">
+            <a-col
+              class="gutter-row"
+              :span="8"
+            >
               <a-button
                 class="getCaptcha"
                 tabindex="-1"
@@ -93,15 +131,27 @@
       <div class="user-login-other">
         <span>其他登录方式</span>
         <a>
-          <a-icon class="item-icon" type="alipay-circle"></a-icon>
+          <a-icon
+            class="item-icon"
+            type="alipay-circle"
+          ></a-icon>
         </a>
         <a>
-          <a-icon class="item-icon" type="taobao-circle"></a-icon>
+          <a-icon
+            class="item-icon"
+            type="taobao-circle"
+          ></a-icon>
         </a>
         <a>
-          <a-icon class="item-icon" type="weibo-circle"></a-icon>
+          <a-icon
+            class="item-icon"
+            type="weibo-circle"
+          ></a-icon>
         </a>
-        <router-link class="register" :to="{ name: 'register' }">注册账户</router-link>
+        <router-link
+          class="register"
+          :to="{ name: 'register' }"
+        >注册账户</router-link>
       </div>
     </a-form>
 
@@ -119,7 +169,8 @@ import md5 from 'md5'
 import TwoStepCaptcha from '@/components/tools/TwoStepCaptcha'
 import { mapActions } from 'vuex'
 import { timeFix } from '@/utils/util'
-import { getSmsCaptcha, get2step } from '@/api/login'
+import { get2step } from '@/api/auth'
+import { getSmsCaptcha } from '@/api/account'
 
 export default {
   components: {

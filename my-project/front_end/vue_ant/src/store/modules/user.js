@@ -1,5 +1,6 @@
 import Vue from 'vue'
-import { login, getInfo, logout } from '@/api/login'
+import { login, logout } from '@/api/auth'
+import { getUserInfo } from '@/api/user'
 import { ACCESS_TOKEN } from '@/store/mutation-types'
 import { welcome } from '@/utils/util'
 
@@ -58,7 +59,7 @@ const user = {
     // 获取用户信息
     GetInfo ({ commit }) {
       return new Promise((resolve, reject) => {
-        getInfo()
+        getUserInfo()
           .then(response => {
             const result = response.result
 
@@ -88,7 +89,7 @@ const user = {
               commit('SET_ROLES', result.role)
               commit('SET_INFO', result)
             } else {
-              reject(new Error('getInfo: roles must be a non-null array !'))
+              reject(new Error('getUserInfo: roles must be a non-null array !'))
             }
 
             commit('SET_NAME', { name: result.name, welcome: welcome() })

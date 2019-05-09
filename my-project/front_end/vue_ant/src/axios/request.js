@@ -8,7 +8,10 @@ import { ACCESS_TOKEN } from '@/store/mutation-types'
 // 设置axios请求的默认配置（接口的参数继承默认配置）
 axios.defaults.baseURL = '/api'
 axios.defaults.timeout = 5000 // 请求超时时间
+// 传参格式：可以全部配置，也可以分别设置
+// axios.defaults.headers['Content-Type'] = 'application/json;charset=UTF-8'
 axios.defaults.headers['get']['Content-Type'] = 'application/json;charset=UTF-8'
+// axios.defaults.headers['post']['Content-Type'] = 'application/json;charset=UTF-8'
 
 // 创建 axios 实例
 const service = axios.create()

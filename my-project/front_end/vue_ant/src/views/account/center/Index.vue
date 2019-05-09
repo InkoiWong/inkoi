@@ -1,7 +1,10 @@
 <template>
   <div class="page-header-index-wide page-header-wrapper-grid-content-main">
     <a-row :gutter="24">
-      <a-col :md="24" :lg="7">
+      <a-col
+        :md="24"
+        :lg="7"
+      >
         <a-card :bordered="false">
           <div class="account-center-avatarHolder">
             <div class="avatar">
@@ -23,13 +26,17 @@
               <span>杭州市</span>
             </p>
           </div>
-          <a-divider/>
+          <a-divider />
 
           <div class="account-center-tags">
             <div class="tagsTitle">标签</div>
             <div>
               <template v-for="(tag, index) in tags">
-                <a-tooltip v-if="tag.length > 20" :key="tag" :title="tag">
+                <a-tooltip
+                  v-if="tag.length > 20"
+                  :key="tag"
+                  :title="tag"
+                >
                   <a-tag
                     :key="tag"
                     :closable="index !== 0"
@@ -54,21 +61,32 @@
                 @blur="handleTagInputConfirm"
                 @keyup.enter="handleTagInputConfirm"
               />
-              <a-tag v-else @click="showTagInput" style="background: #fff; borderStyle: dashed;">
-                <a-icon type="plus"/>New Tag
+              <a-tag
+                v-else
+                @click="showTagInput"
+                style="background: #fff; borderStyle: dashed;"
+              >
+                <a-icon type="plus" />New Tag
               </a-tag>
             </div>
           </div>
-          <a-divider :dashed="true"/>
+          <a-divider :dashed="true" />
 
           <div class="account-center-team">
             <div class="teamTitle">团队</div>
             <a-spin :spinning="teamSpinning">
               <div class="members">
                 <a-row>
-                  <a-col :span="12" v-for="(item, index) in teams" :key="index">
+                  <a-col
+                    :span="12"
+                    v-for="(item, index) in teams"
+                    :key="index"
+                  >
                     <a>
-                      <a-avatar size="small" :src="item.avatar"/>
+                      <a-avatar
+                        size="small"
+                        :src="item.avatar"
+                      />
                       <span class="member">{{ item.name }}</span>
                     </a>
                   </a-col>
@@ -78,7 +96,10 @@
           </div>
         </a-card>
       </a-col>
-      <a-col :md="24" :lg="17">
+      <a-col
+        :md="24"
+        :lg="17"
+      >
         <a-card
           style="width:100%"
           :bordered="false"
@@ -143,7 +164,7 @@ export default {
     ...mapGetters(['nickname', 'avatar']),
 
     getTeams () {
-      this.$http.get('/workplace/teams').then(res => {
+      this.$axios.get('/workplace/teams').then(res => {
         this.teams = res.result
         this.teamSpinning = false
       })

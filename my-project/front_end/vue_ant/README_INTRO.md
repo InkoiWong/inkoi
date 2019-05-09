@@ -15,6 +15,7 @@ cnpm install --save ant-design-vue
 
 - UI 框架
   - [√] Ant Design Vue
+  - [x] ElementUI
 - router
   - [√] README [说明文档](./src/router/README.md)
   - [√] router [路由管理器](./src/router/index.js)
@@ -29,13 +30,14 @@ cnpm install --save ant-design-vue
   - [ ] README [说明文档](./src/axios/README.md)
   - [√] axios [封装](./src/axios/index.js)
   - [√] request [拦截器](./src/axios/request.js)
+- API 接口管理
+  - [√] README [说明文档](./src/api/README.md)
 - layout 布局
   - [ ] README [说明文档]()
   - [√] UserLayout [用户登录注册相关页面布局](./src/layouts/UserLayout.vue)
   - [√] BlankLayout [空白页面布局](./src/layouts/BlankLayout.vue)
   - [√] BasicLayout [基础页面布局](./src/layouts/BasicLayout.vue)
-  - [√] RouteView [keep-alive 功能](./src/layouts/RouteView.vue)
-    > 相关文章：(https://www.jianshu.com/p/4b55d312d297)
+  - [√] RouteView [keep-alive 功能](./src/layouts/RouteView.vue) 相关文章：(https://www.jianshu.com/p/4b55d312d297)
   - [√] PageView [内容区域](./src/layouts/PageView.vue)
 
 ## 项目功能
@@ -45,7 +47,7 @@ cnpm install --save ant-design-vue
   - [ ] Transition 页面切换过渡 (Ant√)
     - [√] progressbar [页面进度动画插件](./docs/progressbar.md)
       - [√] vue-progressbar
-      - [×] nprogress
+      - [x] nprogress
     - [ ] 骨架屏
 - 权限管理
   - [√] router [权限功能控制](./src/permission.js)
