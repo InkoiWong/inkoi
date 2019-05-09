@@ -5,7 +5,5 @@ const api = {
 }
 
 export function getSmsCaptcha (parameter) {
-  return axios.post(api.SendSms, {
-    data: parameter
-  })
+  return axios.post(api.SendSms, parameter)
 }

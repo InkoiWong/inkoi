@@ -5,9 +5,7 @@ const api = {
 }
 
 export function getServiceList (parameter) {
-  return axios.get(api.service, {
-    params: parameter
-  })
+  return axios.get(api.service, parameter)
 }
 
 // id == 0 add     post

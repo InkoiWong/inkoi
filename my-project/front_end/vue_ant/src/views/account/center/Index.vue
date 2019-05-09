@@ -164,10 +164,11 @@ export default {
     ...mapGetters(['nickname', 'avatar']),
 
     getTeams () {
-      this.$axios.get('/workplace/teams').then(res => {
-        this.teams = res.result
-        this.teamSpinning = false
-      })
+      this.$axios.get('/workplace/teams')
+        .then(res => {
+          this.teams = res.result
+          this.teamSpinning = false
+        })
     },
 
     handleTabChange (key, type) {

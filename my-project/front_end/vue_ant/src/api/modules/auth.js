@@ -18,9 +18,7 @@ const api = {
  * @returns {*}
  */
 export function login (parameter) {
-  return axios.post(api.Login, {
-    data: parameter
-  })
+  return axios.post(api.Login, parameter)
 }
 
 export function logout () {
@@ -28,7 +26,5 @@ export function logout () {
 }
 
 export function get2step (parameter) {
-  return axios.post(api.twoStepCode, {
-    data: parameter
-  })
+  return axios.post(api.twoStepCode, parameter)
 }

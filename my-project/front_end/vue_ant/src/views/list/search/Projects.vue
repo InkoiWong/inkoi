@@ -160,11 +160,12 @@ export default {
       console.log(`selected ${value}`)
     },
     getList () {
-      this.$axios.get('/list/article', { params: { count: 8 } }).then(res => {
-        console.log('res', res)
-        this.data = res.result
-        this.loading = false
-      })
+      this.$axios.get('/list/article', { count: 8 })
+        .then(res => {
+          console.log('res', res)
+          this.data = res.result
+          this.loading = false
+        })
     }
   }
 }

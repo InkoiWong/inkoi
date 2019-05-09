@@ -5,7 +5,5 @@ const api = {
 }
 
 export function getRoleList (parameter) {
-  return axios.get(api.role, {
-    params: parameter
-  })
+  return axios.get(api.role, parameter)
 }

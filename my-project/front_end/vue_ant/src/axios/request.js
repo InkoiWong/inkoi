@@ -57,6 +57,21 @@ service.interceptors.response.use(response => {
   return response.data
 }, err)
 
+/**
+ * 二次封装axios.get方法
+ *
+ * 使用方法从 axios.get(url, { params: paramsObj })
+ * 修改为 axios.get(url, paramsObj)
+ * 更方便使用
+ */
+service['get'] = (url, parameter) => {
+  return service({
+    url,
+    method: 'get',
+    params: parameter
+  })
+}
+
 const installer = {
   vm: {},
   install (Vue) {

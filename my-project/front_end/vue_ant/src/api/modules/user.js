@@ -10,7 +10,5 @@ export function getUserInfo () {
 }
 
 export function getUserList (parameter) {
-  return axios.get(api.UserList, {
-    params: parameter
-  })
+  return axios.get(api.UserList, parameter)
 }

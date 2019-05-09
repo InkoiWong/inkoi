@@ -6,7 +6,5 @@ const api = {
 }
 
 export function getPermissions (parameter) {
-  return axios.get(api.permissionNoPager, {
-    params: parameter
-  })
+  return axios.get(api.permissionNoPager, parameter)
 }

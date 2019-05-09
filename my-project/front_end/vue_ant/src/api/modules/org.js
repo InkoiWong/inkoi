@@ -5,7 +5,5 @@ const api = {
 }
 
 export function getOrgTree (parameter) {
-  return axios.get(api.orgTree, {
-    params: parameter
-  })
+  return axios.get(api.orgTree, parameter)
 }

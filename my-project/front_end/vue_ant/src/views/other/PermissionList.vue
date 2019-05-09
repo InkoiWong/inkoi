@@ -238,16 +238,15 @@ export default {
       permissionList: null,
       // 加载数据方法 必须为 Promise 对象
       loadData: parameter => {
-        return this.$axios.get('/permission', {
-          params: Object.assign(parameter, this.queryParam)
-        }).then(res => {
-          const result = res.result
-          result.data.map(permission => {
-            permission.actionList = JSON.parse(permission.actionData)
-            return permission
+        return this.$axios.get('/permission', Object.assign(parameter, this.queryParam))
+          .then(res => {
+            const result = res.result
+            result.data.map(permission => {
+              permission.actionList = JSON.parse(permission.actionData)
+              return permission
+            })
+            return result
           })
-          return result
-        })
       },
 
       selectedRowKeys: [],

@@ -256,9 +256,10 @@ export default {
       })
     },
     getTagCloudData () {
-      this.$axios.get('/data/antv/tag-cloud').then(res => {
-        this.tagCloudData = res.result
-      })
+      this.$axios.get('/data/antv/tag-cloud')
+        .then(res => {
+          this.tagCloudData = res.result
+        })
     }
   }
 }

@@ -164,11 +164,10 @@ export default {
       ],
       // 加载数据方法 必须为 Promise 对象
       loadData: parameter => {
-        return this.$axios.get('/role/list', {
-          params: Object.assign(parameter, this.queryParam)
-        }).then(res => {
-          return res.result
-        })
+        return this.$axios.get('/role/list', Object.assign(parameter, this.queryParam))
+          .then(res => {
+            return res.result
+          })
       },
 
       selectedRowKeys: [],

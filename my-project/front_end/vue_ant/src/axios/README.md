@@ -33,6 +33,27 @@ const postData = Qs.stringify(params) // 过滤成 ?&= 格式
 
 ## 三、封装
 
+> 原生使用 axios.get 有些不方便，需要 axios.get(url, { params: paramsObj })
+
+```es6 [](./request.js)
+/**
+ * 二次封装axios.get方法
+ *
+ * 使用方法从 axios.get(url, { params: paramsObj })
+ * 修改为 axios.get(url, paramsObj)
+ * 更方便使用
+ */
+service['get'] = (url, parameter) => {
+  return service({
+    url,
+    method: 'get',
+    params: parameter
+  })
+}
+```
+
+## 四、挂载到全局
+
 ```es6 [](./axios.js)
 Object.defineProperties(Vue.prototype, {
   $axios: {
@@ -43,8 +64,6 @@ Object.defineProperties(Vue.prototype, {
 })
 ```
 
-## 四、挂载到全局
-
 ```es6 [](./../main.js)
 import { VueAxios } from './axios/request'
 Vue.use(VueAxios)
@@ -53,10 +72,7 @@ Vue.use(VueAxios)
 ## 五、全局使用
 
 ```js
-this.$axios.get(api, {
-  params: parameter
-})
-this.$axios.post(api, {
-  data: parameter
-})
+// 二次封装的axios.get
+this.$axios.get(api, parameter)
+this.$axios.post(api, parameter)
 ```
