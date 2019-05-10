@@ -128,6 +128,8 @@
 <script>
 import moment from 'moment'
 import { TagSelect, StandardFormRow, Ellipsis, AvatarList } from '@/components'
+import { getArticleList } from '@/api/modules/article'
+
 const TagSelectOption = TagSelect.Option
 const AvatarListItem = AvatarList.AvatarItem
 
@@ -160,7 +162,7 @@ export default {
       console.log(`selected ${value}`)
     },
     getList () {
-      this.$axios.get('/list/article', { count: 8 })
+      getArticleList({ count: 8 })
         .then(res => {
           console.log('res', res)
           this.data = res.result

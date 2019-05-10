@@ -1,9 +1,9 @@
 import { axios } from '@/axios/request'
 
 const api = {
-  list: '/role/list'
+  list: '/article/list'
 }
 
-export function getRoleList (parameter) {
+export function getArticleList (parameter) {
   return axios.get(api.list, parameter)
 }

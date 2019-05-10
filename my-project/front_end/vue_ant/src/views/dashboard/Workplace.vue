@@ -198,6 +198,7 @@ import { Radar } from '@/components'
 
 import { getRoleList } from '@/api/modules/role'
 import { getServiceList } from '@/api/modules/service'
+import { getProjectList } from '@/api/modules/project'
 
 const DataSet = require('@antv/data-set')
 
@@ -285,7 +286,7 @@ export default {
   methods: {
     ...mapGetters(['nickname', 'welcome']),
     getProjects () {
-      this.$axios.get('/list/search/projects')
+      getProjectList()
         .then(res => {
           this.projects = res.result && res.result.data
           this.loading = false

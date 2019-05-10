@@ -30,14 +30,17 @@ Mock.mock(url, type, 模板 | func)
 
 > 参考文章
 
-- 语法：(https://www.cnblogs.com/moqiutao/p/7768968.html)
-- 语法：(https://cloud.tencent.com/developer/article/1330971)
-- 模拟随机值：(https://my.oschina.net/tongjh/blog/2999834)
-- 增删查改：(https://blog.csdn.net/qq_42205731/article/details/81705350)
+> 语法：(https://www.cnblogs.com/moqiutao/p/7768968.html)
+> 语法：(https://cloud.tencent.com/developer/article/1330971)
+> 模拟随机值：(https://my.oschina.net/tongjh/blog/2999834)
+> 增删查改：(https://blog.csdn.net/qq_42205731/article/details/81705350)
 
 ### 3、utils
 
-[](./util.js)
+- 公共方法 [](./util.js)
+  - 获取 get 方法的参数 getQueryParameters
+  - 获取 post 方法的参数 getBody
+  - 统一生产响应体方法 builder
 
 ### 4、输出接口
 
@@ -47,8 +50,14 @@ Mock.mock(/\/auth\/login/, 'post', login)
 
 ## 三、使用
 
-[输出](./index.js)
-[调用](./../main.js)
+### 1、工程化汇总所有 service
+
+> 汇总方法文档：(https://www.jianshu.com/p/c894ea00dfec)
+
+- [index.bundle.js](./services/index.bundle.js)
+- [输出](./index.js)
+
+- [调用](./../main.js)
 
 ## 四、mock-map
 

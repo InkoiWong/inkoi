@@ -1,14 +1,14 @@
 import { axios } from '@/axios/request'
 
 const api = {
-  UserInfo: '/user/info',
-  UserList: '/user/list'
+  info: '/user/info',
+  list: '/user/list'
 }
 
 export function getUserInfo () {
-  return axios.get(api.UserInfo)
+  return axios.get(api.info)
 }
 
 export function getUserList (parameter) {
-  return axios.get(api.UserList, parameter)
+  return axios.get(api.list, parameter)
 }

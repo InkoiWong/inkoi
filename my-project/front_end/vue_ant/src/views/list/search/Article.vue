@@ -175,8 +175,9 @@
 <script>
 import { TagSelect, StandardFormRow, ArticleListContent } from '@/components'
 import IconText from './components/IconText'
-const TagSelectOption = TagSelect.Option
+import { getArticleList } from '@/api/modules/article'
 
+const TagSelectOption = TagSelect.Option
 const owners = [
   {
     id: 'wzj',
@@ -225,7 +226,7 @@ export default {
       console.log(`selected ${value}`)
     },
     getList () {
-      this.$axios.get('/list/article')
+      getArticleList()
         .then(res => {
           console.log('res', res)
           this.data = res.result
@@ -234,7 +235,7 @@ export default {
     },
     loadMore () {
       this.loadingMore = true
-      this.$axios.get('/list/article')
+      getArticleList()
         .then(res => {
           this.data = this.data.concat(res.result)
         }).finally(() => {

@@ -1,10 +1,10 @@
 import { axios } from '@/axios/request'
 
 const api = {
-  permission: '/permission',
-  permissionNoPager: '/permission/no-pager'
+  permissionListPager: '/permission/listPager',
+  permissionListNoPager: '/permission/listNoPager'
 }
 
 export function getPermissions (parameter) {
-  return axios.get(api.permissionNoPager, parameter)
+  return axios.get(api.permissionListNoPager, parameter)
 }
