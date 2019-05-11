@@ -52,10 +52,13 @@ Mock.mock(/\/auth\/login/, 'post', login)
 
 ### 1、工程化汇总所有 service
 
-> 汇总方法文档：(https://www.jianshu.com/p/c894ea00dfec)
-
 - [index.bundle.js](./services/index.bundle.js)
 - [输出](./index.js)
+
+> 汇总方法文档：(https://www.jianshu.com/p/c894ea00dfec)
+> 现在在 services 文件夹新增文件都将自动合并到 不需要手动引入了
+
+### 2、构建时调用
 
 - [调用](./../main.js)
 
