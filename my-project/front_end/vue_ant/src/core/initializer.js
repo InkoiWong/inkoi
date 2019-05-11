@@ -15,6 +15,11 @@ import {
 } from '@/store/mutation-types'
 import config from '@/config/defaultSettings'
 
+/**
+ * App 配置都保存在localStorage
+ * 可从里面提取出上次用户选择的配置
+ * 如果提取不到相应值，则使用默认配置defaultSettings
+ */
 export default function Initializer () {
   // Token
   store.commit('SET_TOKEN', Vue.ls.get(ACCESS_TOKEN))
