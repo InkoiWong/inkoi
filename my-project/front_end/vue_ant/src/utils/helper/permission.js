@@ -20,6 +20,9 @@ function plugin (Vue) {
       $auth: {
         get () {
           const _this = this
+          // permissions：`${菜单}.${操作}`
+
+          // 返回Boolean，是否拥有权限
           return permissions => {
             const [permission, action] = permissions.split('.')
             const permissionList = _this.$store.getters.roles.permissions

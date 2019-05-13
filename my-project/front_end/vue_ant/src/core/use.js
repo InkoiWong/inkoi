@@ -3,6 +3,7 @@ import VueStorage from 'vue-ls'
 import config from '@/config/defaultSettings'
 
 // base library
+// UI框架（全部引入组件）
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.less'
 
@@ -14,16 +15,16 @@ import VueCropper from 'vue-cropper'
 // 剪切板功能
 import VueClipboard from 'vue-clipboard2'
 
+// 操作权限控制器
 import PermissionHelper from '@/utils/helper/permission'
-
-VueClipboard.config.autoSetContainer = true
 
 Vue.use(VueStorage, config.storageOptions)
 
 Vue.use(Antd)
 
 Vue.use(Viser)
-Vue.use(VueClipboard)
 Vue.use(VueCropper)
+VueClipboard.config.autoSetContainer = true
+Vue.use(VueClipboard)
 
 Vue.use(PermissionHelper)

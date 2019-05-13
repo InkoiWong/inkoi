@@ -1,3 +1,4 @@
+// 媒体查询功能
 import enquireJs from 'enquire.js'
 
 export const DEVICE_TYPE = {

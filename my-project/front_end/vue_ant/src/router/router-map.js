@@ -5,6 +5,7 @@ import {
   RouteView, // 判断是否在切换router是使用缓存组件功能
   PageView
 } from '@/layouts'
+// 自定义图标加载表
 import { bxAnaalyse } from '@/core/icons'
 
 /**

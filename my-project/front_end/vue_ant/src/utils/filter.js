@@ -1,4 +1,6 @@
 import Vue from 'vue'
+
+// 日期处理类库
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 moment.locale('zh-cn')

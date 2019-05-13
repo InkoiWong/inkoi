@@ -27,20 +27,28 @@ cnpm install --save ant-design-vue
   - [√] README [说明文档](./src/store/README.md)
   - [√] store [状态管理器](./src/store/index.js)
 - axios
-  - [ ] README [说明文档](./src/axios/README.md)
-  - [√] axios [封装](./src/axios/index.js)
+  - [√] README [说明文档](./src/axios/README.md)
+  - [√] axios [封装](./src/axios/axios.js)
   - [√] request [拦截器](./src/axios/request.js)
 - API 接口管理
   - [√] README [说明文档](./src/api/modules/README.md)
-- layout 布局
-  - [ ] README [说明文档]()
-  - [√] UserLayout [用户登录注册相关页面布局](./src/layouts/UserLayout.vue)
-  - [√] BlankLayout [空白页面布局](./src/layouts/BlankLayout.vue)
-  - [√] BasicLayout [基础页面布局](./src/layouts/BasicLayout.vue)
-  - [√] RouteView [keep-alive 功能](./src/layouts/RouteView.vue) 相关文章：(https://www.jianshu.com/p/4b55d312d297)
-  - [√] PageView [内容区域](./src/layouts/PageView.vue)
+- icon 图标
+  - [√] icons [自定义图标加载表](./src/core/icons.js)
+- mixin 混入继承功能
+  - [√] mixin [](./src/utils/mixin.js)
+- css 媒体查询功能
+  - [√] require.js [](./src/utils/device.js)
 
-## 项目功能
+## 全局自定义功能
+
+- [√] `{ $axios }` [http 请求 promise 函数](./src/axios/axios.js)
+- [√] `{ v-action }` [操作权限控制组件](./src/permission.js)
+- [√] `{ $auth }` [操作权限控制操作](./src/utils/helper/permission.js)
+- [√] `{ Filter }` [过滤器功能](./src/utils/filter.js)
+
+## 引入插件
+
+## 项目基础功能
 
 - 基础设置
   - [√] Title [页面标题控制](./src/utils/domUtil.js)
@@ -54,6 +62,18 @@ cnpm install --save ant-design-vue
     - [√] 动态添加可访问路由表
     - [√] Action 权限指令
   - [√] store [权限功能管理](./src/store/permission.js)
+
+## 布局与组件
+
+- layout 布局
+  - [ ] README [说明文档]()
+  - [√] UserLayout [用户登录注册相关页面布局](./src/layouts/UserLayout.vue)
+  - [√] BlankLayout [空白页面布局](./src/layouts/BlankLayout.vue)
+  - [√] BasicLayout [基础页面布局](./src/layouts/BasicLayout.vue)
+  - [√] RouteView [keep-alive 功能](./src/layouts/RouteView.vue) 相关文章：(https://www.jianshu.com/p/4b55d312d297)
+  - [√] PageView [内容区域](./src/layouts/PageView.vue)
+- component 组件
+  - [ ] README [说明文档]()
 
 ## 项目结构
 

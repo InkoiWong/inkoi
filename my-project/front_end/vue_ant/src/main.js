@@ -14,7 +14,9 @@ import { VueAxios } from './axios/request'
 import './mock'
 
 import './core/use'
+// 设置菜单权限
 import './permission' // permission control
+// 全局过滤器
 import './utils/filter' // global filter
 // 初始化 App 配置
 import Initializer from './core/initializer'
