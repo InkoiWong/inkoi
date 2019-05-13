@@ -1,9 +1,9 @@
 import {
   UserLayout, // 用户登录注册相关页面布局
   BlankLayout, // 空白页面布局
-  BasicLayout,
+  BasicLayout, // 基础页面布局
   RouteView, // 判断是否在切换router是使用缓存组件功能
-  PageView
+  PageView // 内容区域
 } from '@/layouts'
 // 自定义图标加载表
 import { bxAnaalyse } from '@/core/icons'

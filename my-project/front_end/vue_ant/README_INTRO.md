@@ -31,7 +31,7 @@ cnpm install --save ant-design-vue
   - [√] axios [封装](./src/axios/axios.js)
   - [√] request [拦截器](./src/axios/request.js)
 - API 接口管理
-  - [√] README [说明文档](./src/api/modules/README.md)
+  - [√] README [说明文档](./src/api/README.md)
 - icon 图标
   - [√] icons [自定义图标加载表](./src/core/icons.js)
 - mixin 混入继承功能
@@ -66,14 +66,9 @@ cnpm install --save ant-design-vue
 ## 布局与组件
 
 - layout 布局
-  - [ ] README [说明文档]()
-  - [√] UserLayout [用户登录注册相关页面布局](./src/layouts/UserLayout.vue)
-  - [√] BlankLayout [空白页面布局](./src/layouts/BlankLayout.vue)
-  - [√] BasicLayout [基础页面布局](./src/layouts/BasicLayout.vue)
-  - [√] RouteView [keep-alive 功能](./src/layouts/RouteView.vue) 相关文章：(https://www.jianshu.com/p/4b55d312d297)
-  - [√] PageView [内容区域](./src/layouts/PageView.vue)
+  - [√] README [说明文档](./src/layouts/README.md)
 - component 组件
-  - [ ] README [说明文档]()
+  - [ ] README [说明文档](./src/component/README.md)
 
 ## 项目结构
 
