@@ -1,0 +1,36 @@
+## 目录
+
+- [benchmarks] 在对一些比较复杂情况处理的时候，Vue 的一些跑分 Demo，如大数据的 table、或者渲染大量 SVG
+- [dist] 构建好的不同的 Vue 版本，如完整版、或者只含运行时版
+- [examples] 用 Vue 写的一些小 Demo
+- [flow] Vue 源码的类型检查用的是 flow，这个目录里主要是 flow 的类型声明文件
+- [packages] 里面主要有 4 个其它 Vue 相关的 npm 包，可以单独使用
+- [scripts] 存放一些 npm 脚本的配置文件，结合 webpack、rollup 等工具进行编译、测试、构建等操作
+- [src]
+  - [compiler] 解析模板相关
+    - [codegen] 把 AST 转换成 Render 函数
+    - [directives]
+    - [parser] 解析模板成 AST
+  - [core]
+    - [components] 组件相关属性，这里主要是 Keep-Alive
+    - [global-api] Vue 全局 API，如 Vue、extend、Vue.mixin
+    - [instance] 实例化相关的内容，生命周期，事件等
+    - [observer] 响应式数据核心目录
+    - [util]
+    - [vdom] 虚拟 dom 相关内容（借鉴 Snabbdom）
+  - [platforms]
+    - [web]
+      - [compiler] web 端编译器相关代码，用来编译模板成 render 函数
+      - [runtime] web 端运行时相关代码，用来创建 Vue 实例等
+      - [server] 服务端渲染
+      - [util]
+    - [weex]
+  - [server] 服务端渲染（ssr）相关
+  - [sfc] 转换单文件组件（\*.vue）
+  - [shared] 全局共享的一些方法和常量
+- [test] 测试用例
+- [types] 由于 Vue 新版本支持 Typescript，该目录主要是 ts 的类型声明文件
+
+---
+
+[下一篇](./2-1Vue核心.md)
