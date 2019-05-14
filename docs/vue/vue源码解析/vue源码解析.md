@@ -64,6 +64,10 @@ initInjections(vm); // resolve injections before data/props
 initState(vm);
 initProvide(vm); // resolve provide after data/props
 callHook(vm, 'created');
+
+...;
+
+vm.$mount(vm.$options.el)
 ```
 
 Vue 的初始化逻辑写的非常清楚，把不同的功能逻辑拆成一些单独的函数执行，让主线逻辑一目了然
@@ -80,7 +84,8 @@ if (vm.$options.el) {
 
 ### 2-2-2 重点分析
 
-`initState()` 方法：实际就是 `初始化props、methods、data、computed、watch`
+`initState()` 方法：
+实际就是 `初始化props、methods、data、computed、watch`
 
 [](./vue/src/core/instance/state.js)
 
@@ -102,13 +107,49 @@ export function initState(vm: Component) {
 }
 ```
 
-这里 `initData()` 做了一些事情
+这里 `initData()` 做了一些事情：
 1） 判断 data 是否`函数`
-2） 判断与 props 是否有`重名`。因为最后都会挂载到 `vm 对象`上，然后对 vm 对象进行一层 `proxy 代理`，getter 和 setter
+2） 判断与 props 是否有`重名`。因为最后都会挂载到 `vm 对象`上，然后对 vm 对象进行一层 `proxy 代理`，`getter` 和 `setter`
 [proxy](./vue/src/core/instance/state.js)
 3） 最后 `observe` data
 [observe](./vue/src/core/observer/index.js)
 
 ---
 
-`vm.$mount` 方法：
+`vm.$mount()` 方法：
+
+> Vue 不能挂载到 body 或 html 这样的根节点上，一般都用 div 嵌套包括起来，会被覆盖，Vue2.0 版本中，所有的 vue 组件渲染最终都需要 rendr 方法，不论写的是 el 或者 template 属性，最终都会转换成 render 方法，即"在线编译的过程"
+
+1）调用已挂载在原型上的 `$mount`
+[](./vue/src/platforms/web/runtime/index.js)
+
+2）`$mount` 调用 `mountComponent`
+[](./vue/src/core/instance/lifecycle.js)
+
+2-1）检测 `render` 函数，然后声明周期 `beforeMount`；
+
+2-2）`vm._render` --- `createElement` --- `VNode`：创建 VNode
+
+调用 `vm._render()` 方法通过 `createElement` 方法生成 `VNode`；
+
+2-2-1）`createElement`
+`template` --- `AST` --- `render Function` --- `VNode` --- `patch Dom`
+`AST`：Abstract Syntax Tree（抽象语法树）
+[](./vue/src/core/vdom/create-element.js)
+
+render 函数调用后`vm._render()`会生成`vnode对象`，也就是大家熟知的`虚拟dom树`，调用 update 方法就能根据 vonde 更新真实的浏览器 dom。
+
+2-3）`new Watcher` --- `updateComponent` --- `vm._update`：把 VNode 转换为真实的 DOM
+
+再实例化一个渲染 `Watcher`，在它的回调函数中会调用 `updateComponent` 方法，最终调用 `vm._update` 更新 DOM；
+
+> `Watcher` 的作用
+> a) 初始化的时候执行回调函数
+> b) 当 vm 实例中，监测的数据发生变化的时候执行回调函数
+
+注意：这里用到了我们之前所一直说明的 Watcher，也就是在这里定义的。这里先说明一下依赖收集的过程：因为 Vue 数据里定义的 Data 可能并不是所有数据都是视图渲染所需要的。也就是说，我们需要知道哪些数据的变动是需要更新视图，哪些是不需要重新渲染视图的， 在我们执行`vm._watcher = new Watcher(vm, updateComponent, noop)`这句话的时候，会触发我们定义的 Watcher 里面的 get 方法。同时设置了`Dep.target = watcher`。get 方法会去执行传入的 updateComponent 方法，也就是说会去做`template --> AST --> render Function --> VNode --> patch Dom`这样一个流程。这个过程中，会去读取我们绑定的数据。由于之前我们通过`observer`进行了数据劫持，这样会触发数据的 get 方法。此时会将 watcher 添加到 对应的 dep 中。当有数据更新时，通过`dep.notify()`去通知到 watcher，然后执行 watcher 中的 update 方法。此时又会去重新执行 get updateComponent，至此完成对视图的重新渲染。
+
+2-4）`mounted`
+
+最后判断为根节点时，设置 `vm._isMounted` 为 true（表示这个实例已经挂载了），同时执行 `mounted` 钩子函数。
+这里注意 `vm.$vnode` 表示 Vue 实例的父虚拟 Node，所以它为 Null 则表示当前是根 Vue 的实例。
