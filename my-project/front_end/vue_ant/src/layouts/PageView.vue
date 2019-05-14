@@ -74,6 +74,7 @@
         </div>
       </div>
     </page-header>
+
     <div class="content">
       <div class="page-header-index-wide">
         <slot>
