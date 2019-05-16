@@ -19,15 +19,48 @@
   </head>
   <body>
     <div id="app">
-      <span v-text="message"></span>
-      <input type="text" v-model="message" />
-      {{ message }}
+      <h1>
+        <span>通过v-model绑定：</span>
+        <input type="text" v-model="message" />
+      </h1>
+
+      <h1>
+        <span>通过v-text绑定：</span>
+        <span v-text="message"></span>
+      </h1>
+
+      <h1>
+        <span>通过{{}}绑定：</span>
+        <span>{{ message }}</span>
+      </h1>
+
+      <h1>
+        <span>通过:value绑定：</span>
+        <input type="text" :value="message" />
+      </h1>
+
+      <h1>
+        <span>通过@click绑定：</span>
+        <button @click="clickMe">click me!</button>
+        <span>(点击后value会变成HelloWorld)</span>
+      </h1>
     </div>
     <script>
-      var vm = new MVVM({
+      new MVVM({
         el: '#app',
         data: {
           message: 'testMsg'
+        },
+        methods: {
+          clickMe() {
+            console.log('触发clickMe');
+            this.changeMsg();
+          },
+
+          changeMsg() {
+            console.log('调用changeMsg');
+            this.message = 'HelloWorld';
+          }
         }
       });
     </script>

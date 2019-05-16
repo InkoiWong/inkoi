@@ -1,126 +1,229 @@
-//创建一个模板编译工具
+/**
+ * @desc  创建模板编译器
+ */
 class Compile {
   constructor(el, vm) {
-    this.el = this.isElementNode(el) ? el : document.querySelector(el);
+    // 获取挂载元素
+    this.el = document.querySelector(el);
     this.vm = vm;
+    this.fragment = null;
+
     if (this.el) {
-      //将对应范围的html放入内存fragment
-      var fragment = this.node2Fragment(this.el);
-      //编译模板
-      this.compile(fragment);
-      //将数据放回页面
-      this.el.appendChild(fragment);
+      // 将目标node节点的html内容转换成fragment节点片段缓存
+      this.fragment = this.node2Fragment(this.el);
+
+      // 编译模板
+      this.compile(this.fragment);
+      // 将数据放回页面
+      this.el.appendChild(this.fragment);
     }
   }
 
-  /*********************工具方法**************************** */
-  //是不是元素节点
+  /* ********************工具方法******************** */
+  // 判断元素节点
   isElementNode(node) {
     return node.nodeType === 1;
   }
-  //判断文本节点
+  // 判断文本节点
   isTextNode(node) {
     return node.nodeType === 3;
   }
-  //类似数组变数组
+  // 类数组转数组
   toArray(fakeArr) {
     return [].slice.call(fakeArr);
   }
-  //判断是不是指令属性
-  isDirective(directiveName) {
-    return directiveName.indexOf('v-') >= 0;
-  }
-  /*********************工具方法**************************** */
 
-  //吧模板放入内存
-  node2Fragment(node) {
+  // 判断指令绑定方式
+  isDirective(dir) {
+    return dir.indexOf('v-') === 0;
+  }
+  isColonDirective(dir) {
+    return dir.indexOf(':') === 0;
+  }
+  isEventDirective(dir) {
+    return dir.indexOf('@') === 0;
+  }
+  /* ********************工具方法******************** */
+
+  /**
+   * @desc  将目标node节点的html内容转换成fragment节点片段缓存
+   * @param {*} el
+   * @returns
+   */
+  node2Fragment(el) {
+    /**
+     * @func  document.createDocumentFragment
+     * @desc  创建一虚拟的节点对象，节点对象包含所有属性和方法。
+     *        可用于提取文档的一部分，改变，增加，或删除某些内容及插入到文档末尾
+     */
     var fragment = document.createDocumentFragment();
     var child;
-    while ((child = node.firstChild)) {
+    // 通过循环把 node的每个节点 都提取到 fragment 中
+    while ((child = el.firstChild)) {
       fragment.appendChild(child);
     }
+
     return fragment;
   }
-  //编译模板方法
-  compile(parent) {
-    var childNodes = parent.childNodes;
+
+  /**
+   * @desc  编译模板方法
+   * @param {*} el
+   */
+  compile(el) {
+    var childNodes = el.childNodes;
     var arr = this.toArray(childNodes);
     arr.forEach(node => {
-      //元素节点，解析指令
+      // 根据不同的节点类型，分别解析指令
+
+      // 找到我们需要的节点进行解析
       if (this.isElementNode(node)) {
-        this.compileElement(node);
-      } else {
-        //文本节点
-        //定义文本表达式验证规则
-        var textReg = /\{\{\s(.*)\s\}\}/;
-        var expr = node.textContent;
-        if (textReg.test(expr)) {
-          //var key = textReg.exec( expr )[1]
-          expr = RegExp.$1;
-          //调用方法编译
-          this.compileText(node, expr);
+        // 元素节点
+        this.compileElementNode(node);
+      } else if (this.isTextNode(node)) {
+        // 文本节点
+
+        // 再判断是否我们的目的节点
+        // 如 vue 所定义的 {{ aaa }} 这种格式
+        var reg = /\{\{\s(.*)\s\}\}/;
+        var text = node.textContent;
+
+        reg.test(text) ? this.compileTextNode(node, reg.exec(text)[1]) : null;
+      }
+
+      // 递归遍历
+      if (node.childNodes && node.childNodes.length) {
+        this.compile(node);
+      }
+    });
+  }
+
+  // 编译元素节点
+  compileElementNode(node) {
+    var attrs = this.toArray(node.attributes);
+
+    if (!attrs || attrs.length <= 0) {
+      return;
+    }
+
+    // 遍历当前元素所有属性
+    attrs.forEach(attr => {
+      var attrName = attr.name;
+
+      // 通过 v- 绑定属性
+      // v-model、v-text
+      if (this.isDirective(attrName)) {
+        // 提取 绑定字段
+        var type = attrName.split('-')[1];
+        var exp = attr.value;
+
+        switch (type) {
+          case 'text':
+            this.Compiler['text'](node, exp);
+            break;
+          case 'model':
+            this.Compiler['model'](node, exp);
+            break;
         }
       }
-    });
-  }
-  //解析元素节点
-  compileElement(node) {
-    var arrs = node.attributes;
-    //遍历当前元素所有属性
-    this.toArray(arrs).forEach(attr => {
-      var attrName = attr.name;
-      if (this.isDirective(attrName)) {
-        //获取v-text的text
-        var type = attrName.split('-')[1];
-        var expr = attr.value;
-        CompilerUtils[type] && CompilerUtils[type](node, this.vm, expr);
+
+      // 通过 : 方式绑定属性
+      // :value
+      if (this.isColonDirective(attrName)) {
+        // 提取 绑定字段
+        var type = attrName.split(':')[1];
+        var exp = attr.value;
+
+        switch (type) {
+          case 'value':
+            this.Compiler['model'](node, exp);
+            break;
+        }
+      }
+
+      // 通过 @ 方式绑定属性
+      // @click
+      if (this.isEventDirective(attrName)) {
+        // 提取 绑定字段
+        var eventName = attrName.split('@')[1];
+        var methodName = attr.value;
+
+        this.Compiler['event'](node, eventName, methodName);
       }
     });
   }
-  //解析文本节点
-  compileText(node, expr) {
-    CompilerUtils.text(node, this.vm, expr);
+  // 编译文本节点
+  compileTextNode(node, exp) {
+    this.Compiler['text'](node, exp);
   }
-}
-CompilerUtils = {
-  /*******解析v-text指令时候只执行一次，但是里面的更新数据方法会执行n多次*********/
-  text(node, vm, expr) {
-    /*第一次*/
-    var updateFn = this.updater.textUpdater;
-    updateFn && updateFn(node, vm.$data[expr]);
 
-    /*第n+1次 */
-    new Watcher(vm, expr, newValue => {
-      //发出订阅时候，按照之前的规则，对节点进行更新
-      updateFn && updateFn(node, newValue);
-    });
-  },
-  /*******解析v-model指令时候只执行一次，但是里面的更新数据方法会执行n多次*********/
-  model(node, vm, expr) {
-    var updateFn = this.updater.modelUpdater;
-    updateFn && updateFn(node, vm.$data[expr]);
+  /* ********************指令解析******************** */
+  Compiler = {
+    /**
+     * @desc  用于解析使用'文本模板'的指令
+     *        'v-text' 和 {{}}
+     *
+     *        初次渲染的时候执行一次
+     *        然后再订阅者处订阅一次，这样就能保证每次更新都会渲染
+     */
+    text: (node, exp) => {
+      var _this = this;
+      var initText = this.vm.$data[exp];
 
-    /*第n+1次 */
-    new Watcher(vm, expr, newValue => {
-      //发出订阅时候，按照之前的规则，对节点进行更新
-      updateFn && updateFn(node, newValue);
-    });
-
-    //视图到模型(观察者模式)
-    node.addEventListener('input', e => {
-      //获取新值放到模型
-      var newValue = e.target.value;
-      vm.$data[expr] = newValue;
-    });
-  },
-  updater: {
-    //v-text数据回填
-    textUpdater(node, value) {
-      node.textContent = value;
+      this.Updater['text'](node, initText);
+      new Watcher(this.vm, exp, function(value) {
+        _this.Updater['text'](node, value);
+      });
     },
-    //v-model数据回填
-    modelUpdater(node, value) {
-      node.value = value;
+    /**
+     * @desc  用于解析使用'模型模板'的指令
+     *        'v-model' 和 ':value'
+     *
+     *        初次渲染的时候执行一次
+     *        然后再订阅者处订阅一次，这样就能保证每次更新都会渲染
+     */
+    model: (node, exp) => {
+      var _this = this;
+      var val = this.vm.$data[exp];
+
+      this.Updater['model'](node, val);
+      new Watcher(this.vm, exp, function(value) {
+        _this.Updater['model'](node, value);
+      });
+
+      node.addEventListener('input', function(e) {
+        var newValue = e.target.value;
+        if (val === newValue) {
+          return;
+        }
+        _this.vm.$data[exp] = newValue;
+        val = newValue;
+      });
+    },
+    /**
+     * @desc  用于解析使用'操作绑定'的指令
+     *        '@click'
+     */
+    event: (node, eventName, methodName) => {
+      var cb = this.vm.$methods && this.vm.$methods[methodName];
+
+      if (cb) {
+        node.addEventListener(eventName, cb.bind(this.vm), false);
+      } else {
+        console.log(`未定义${methodName}函数`);
+      }
     }
-  }
-};
+  };
+  /* ********************指令解析******************** */
+
+  /* ********************渲染更新******************** */
+  Updater = {
+    text: (node, value) => {
+      node.textContent = typeof value == 'undefined' ? '' : value;
+    },
+    model: (node, value) => {
+      node.value = typeof value == 'undefined' ? '' : value;
+    }
+  };
+  /* ********************渲染更新******************** */
+}

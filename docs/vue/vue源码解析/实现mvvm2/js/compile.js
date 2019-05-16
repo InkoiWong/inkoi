@@ -9,7 +9,7 @@ Compile.prototype = {
   init: function() {
     if (this.el) {
       this.fragment = this.nodeToFragment(this.el);
-      this.compileElement(this.fragment);
+      this.compile(this.fragment);
       this.el.appendChild(this.fragment);
     } else {
       console.log('Dom元素不存在');
@@ -25,7 +25,7 @@ Compile.prototype = {
     }
     return fragment;
   },
-  compileElement: function(el) {
+  compile: function(el) {
     var childNodes = el.childNodes;
     var self = this;
     [].slice.call(childNodes).forEach(function(node) {
@@ -33,17 +33,17 @@ Compile.prototype = {
       var text = node.textContent;
 
       if (self.isElementNode(node)) {
-        self.compile(node);
+        self.compileElement(node);
       } else if (self.isTextNode(node) && reg.test(text)) {
         self.compileText(node, reg.exec(text)[1]);
       }
 
       if (node.childNodes && node.childNodes.length) {
-        self.compileElement(node);
+        self.compile(node);
       }
     });
   },
-  compile: function(node) {
+  compileElement: function(node) {
     var nodeAttrs = node.attributes;
     var self = this;
     Array.prototype.forEach.call(nodeAttrs, function(attr) {
@@ -88,6 +88,8 @@ Compile.prototype = {
 
     node.addEventListener('input', function(e) {
       var newValue = e.target.value;
+      console.log('val', val);
+      console.log('newValue', newValue);
       if (val === newValue) {
         return;
       }
