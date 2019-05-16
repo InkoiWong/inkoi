@@ -41,8 +41,14 @@
 
       <h1>
         <span>通过@click绑定：</span>
-        <button @click="clickMe">click me!</button>
+        <button @click="clickMe1">click me!</button>
         <span>(点击后value会变成HelloWorld)</span>
+      </h1>
+
+      <h1>
+        <span>通过v-on:click绑定：</span>
+        <button v-on:click="clickMe2">click me!</button>
+        <span>(点击后value会变成Happy1024)</span>
       </h1>
     </div>
     <script>
@@ -52,14 +58,18 @@
           message: 'testMsg'
         },
         methods: {
-          clickMe() {
-            console.log('触发clickMe');
-            this.changeMsg();
+          clickMe1() {
+            this.changeMsg1();
+          },
+          changeMsg1() {
+            this.message = 'HelloWorld';
           },
 
-          changeMsg() {
-            console.log('调用changeMsg');
-            this.message = 'HelloWorld';
+          clickMe2() {
+            this.changeMsg2();
+          },
+          changeMsg2() {
+            this.message = 'Happy1024';
           }
         }
       });

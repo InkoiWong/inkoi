@@ -37,6 +37,9 @@ class Compile {
   isDirective(dir) {
     return dir.indexOf('v-') === 0;
   }
+  isDirectiveBindOn(dir) {
+    return dir.indexOf('on:') === 0;
+  }
   isColonDirective(dir) {
     return dir.indexOf(':') === 0;
   }
@@ -110,45 +113,69 @@ class Compile {
     attrs.forEach(attr => {
       var attrName = attr.name;
 
+      // 用户判断是否命中我们需要解析的属性
+      var hit = false;
+
       // 通过 v- 绑定属性
-      // v-model、v-text
+      // v-model、v-text、v-on:click
       if (this.isDirective(attrName)) {
         // 提取 绑定字段
-        var type = attrName.split('-')[1];
+        var dir = attrName.substring(2);
         var exp = attr.value;
 
-        switch (type) {
-          case 'text':
-            this.Compiler['text'](node, exp);
-            break;
-          case 'model':
-            this.Compiler['model'](node, exp);
-            break;
+        if (this.isDirectiveBindOn(dir)) {
+          // v-on:click
+
+          var eventDir = dir.substring(3);
+          this.Compiler['event'](node, eventDir, exp);
+        } else {
+          // v-model、v-text
+
+          switch (dir) {
+            case 'text':
+              this.Compiler['text'](node, exp);
+              break;
+            case 'model':
+              this.Compiler['model'](node, exp);
+              break;
+          }
         }
+
+        hit = true;
       }
 
       // 通过 : 方式绑定属性
       // :value
       if (this.isColonDirective(attrName)) {
         // 提取 绑定字段
-        var type = attrName.split(':')[1];
+        var dir = attrName.substring(1);
         var exp = attr.value;
 
-        switch (type) {
+        switch (dir) {
           case 'value':
             this.Compiler['model'](node, exp);
             break;
         }
+
+        hit = true;
       }
 
       // 通过 @ 方式绑定属性
       // @click
       if (this.isEventDirective(attrName)) {
         // 提取 绑定字段
-        var eventName = attrName.split('@')[1];
-        var methodName = attr.value;
+        var dir = attrName.substring(1);
+        var exp = attr.value;
 
-        this.Compiler['event'](node, eventName, methodName);
+        this.Compiler['event'](node, dir, exp);
+
+        hit = true;
+      }
+
+      // 可选
+      // 如果不想在编译后的html中看到vue代码，则可以删除命中的属性
+      if (hit) {
+        node.removeAttribute(attrName);
       }
     });
   }
@@ -203,14 +230,17 @@ class Compile {
     /**
      * @desc  用于解析使用'操作绑定'的指令
      *        '@click'
+     *
+     * @param   dir   指令符--eventName
+     * @param   exp   描述符--methodName
      */
-    event: (node, eventName, methodName) => {
-      var cb = this.vm.$methods && this.vm.$methods[methodName];
+    event: (node, dir, exp) => {
+      var cb = this.vm.$methods && this.vm.$methods[exp];
 
       if (cb) {
-        node.addEventListener(eventName, cb.bind(this.vm), false);
+        node.addEventListener(dir, cb.bind(this.vm), false);
       } else {
-        console.log(`未定义${methodName}函数`);
+        console.log(`未定义${exp}函数`);
       }
     }
   };
