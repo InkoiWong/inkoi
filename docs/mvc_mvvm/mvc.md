@@ -22,5 +22,5 @@
           ↙                        ↖
         ↙                            ↖
       ↙                                ↖
-    model                             model
+    model                              view
 ```
