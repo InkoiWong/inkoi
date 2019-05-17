@@ -38,6 +38,7 @@ class Compile {
     return dir.indexOf('v-') === 0;
   }
   isDirectiveBindOn(dir) {
+    // 在isDirective基础上使用
     return dir.indexOf('on:') === 0;
   }
   isColonDirective(dir) {
@@ -173,7 +174,7 @@ class Compile {
       }
 
       // 可选
-      // 如果不想在编译后的html中看到vue代码，则可以删除命中的属性
+      // 如果不想在编译后的html中看到vue绑定指令代码，则可以删除命中的属性
       if (hit) {
         node.removeAttribute(attrName);
       }

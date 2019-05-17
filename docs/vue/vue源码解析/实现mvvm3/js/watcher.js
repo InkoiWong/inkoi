@@ -5,7 +5,7 @@ class Watcher {
   /**
    *Creates an instance of Watcher.
    * @param {*} vm    全局vm对象
-   * @param {*} exp  订阅的节点
+   * @param {*} exp   订阅的节点
    *                  v-model、v-text、:value、{{}}等方法所关联的节点
    * @param {*} cb    发布更新时需要做的回调函数
    *                  在 Dep 的 notify 方法中被触发
