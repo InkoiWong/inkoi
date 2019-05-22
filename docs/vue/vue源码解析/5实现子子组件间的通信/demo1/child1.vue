@@ -9,7 +9,7 @@ export default {
   mounted() {
     EventBus.$on('event', msg => {
       /* eslint-disable */
-      console.log(msg);
+      console.log('msg：', msg);
     });
   }
 }
