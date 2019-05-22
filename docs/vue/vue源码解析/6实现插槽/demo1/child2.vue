@@ -5,6 +5,7 @@
   </div>
 </template>
 <script>
+// 普通子组件
 export default {
   data () {
     return {

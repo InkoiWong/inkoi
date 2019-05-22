@@ -9,6 +9,7 @@
   </div>
 </template>
 <script>
+// 普通插槽
 export default {
   data () {
     return {
