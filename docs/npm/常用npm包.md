@@ -8,7 +8,7 @@
 node check-records.js
 ```
 
-## node 自带的 npm 包
+## node 内置模块
 
 > 不需要额外安装的包，可以直接使用
 
@@ -17,7 +17,7 @@ node check-records.js
   - [fs](./tutorial/fs.js) 文件系统
   - [path](./tutorial/path.js) 处理文件路径的工具
 
-## 其它 npm 常用包使用方法
+## 第三方 npm 常用包使用方法
 
 - 文件处理
 
