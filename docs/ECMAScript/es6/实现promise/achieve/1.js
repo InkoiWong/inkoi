@@ -1,4 +1,4 @@
-// 使用例子
+// 应用场景1
 new Promise((resolve, reject) => {
   setTimeout(() => {
     resolve();
