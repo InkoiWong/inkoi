@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>中心居中</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .p {
+      background-color: red
+    }
+
+    .c {
+      background-color: orange
+    }
+  </style>
+</head>
+
+<body>
+
+  <style media="screen">
+    #p1 {
+      width: 400px;
+      height: 250px;
+      text-align: center;
+    }
+
+    #p1::before {
+      display: inline-block;
+      height: 100%;
+      content: '';
+      vertical-align: middle;
+    }
+
+    #p1 .c {
+      width: 50%;
+      height: 50%;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  </style>
+  <div id="p1" class="p">
+    <div class="c">1:ie8+</div>
+  </div>
+
+  <br>
+  <style media="screen">
+    #p6 {
+      width: 400px;
+      height: 250px;
+      position: relative;
+    }
+
+    #p6 .c {
+      width: 50%;
+      height: 50%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+    }
+  </style>
+  <div id="p6" class="p">
+    <div class="c">2:ie8+</div>
+  </div>
+
+  <br>
+  <style media="screen">
+    #p2 {
+      width: 400px;
+      height: 250px;
+      position: relative;
+    }
+
+    #p2 .c {
+      width: 50%;
+      height: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+  <div id="p2" class="p">
+    <div class="c">3:ie9+</div>
+  </div>
+
+  <br>
+  <style media="screen">
+    #p3 {
+      width: 400px;
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #p3 .c {
+      width: 50%;
+      height: 50%;
+    }
+  </style>
+  <div id="p3" class="p">
+    <div class="c">4:ie10+</div>
+  </div>
+
+  <br>
+  <style media="screen">
+    #p4 {
+      width: 400px;
+      height: 250px;
+      vertical-align: middle;
+      display: table-cell;
+      text-align: center;
+    }
+
+    #p4 .c {
+      width: 50%;
+      height: 50%;
+      display: inline-block;
+    }
+  </style>
+  <div id="p4" class="p">
+    <div class="c">5:table-cell</div>
+  </div>
+
+  <br>
+  <style media="screen">
+    #p5 {
+      width: 400px;
+      height: 250px;
+      vertical-align: middle;
+      display: table-cell;
+    }
+
+    #p5 .c {
+      width: 50%;
+      height: 50%;
+      margin: 0 auto;
+    }
+  </style>
+  <div id="p5" class="p">
+    <div class="c">6:table-cell</div>
+  </div>
+
+  <br>
+  <style media="screen">
+    #p7 {
+      width: 400px;
+      height: 250px;
+      display: grid;
+      grid-template-rows: auto 10% auto;
+      grid-template-columns: auto 80% auto;
+    }
+  </style>
+  <div id="p7" class="p">
+    <div class=""></div>
+    <div class=""></div>
+    <div class=""></div>
+    <div class=""></div>
+    <div class="c">中心</div>
+    <div class=""></div>
+    <div class=""></div>
+    <div class=""></div>
+    <div class=""></div>
+  </div>
+
+</body>
+
+</html>
