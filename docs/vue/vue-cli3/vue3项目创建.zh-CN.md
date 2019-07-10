@@ -53,6 +53,11 @@ vue build App.vue // 打包出生产环境的包并用来部署
 vue create '项目名称'
 ```
 
+或者在已有仓库的文件夹中
+```
+vue init
+```
+
 > 2 选择模板
 
 - 一开始只有两个选项: default(默认配置)和 Manually select features(手动配置)
