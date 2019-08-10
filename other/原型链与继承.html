@@ -12,21 +12,24 @@
 
 </body>
 <script>
-  var dog = {
-    name: '金毛'
-  }
-
   function Person(name, age) {
     this.name = name
     this.age = age
   }
 
+  var p1 = new Person('小明', 20)
+
+  console.log('Person.prototype', Person.prototype);
+  console.log('p1.__proto__', p1.__proto__);
+  console.log('p1.__proto__ === Person.prototype', p1.__proto__ === Person.prototype);
+
   console.log('1', Person.__proto__ === Function.prototype); // true
   console.log('2', Person.__proto__ === Object.prototype); // false
-  console.log('3', dog.__proto__ === Object.prototype); // true
+  console.log('3', p1.__proto__ === Object.prototype); // true
+
   console.log('4', Person instanceof Function); // true
   console.log('5', Person instanceof Object); // true
-  console.log('6', dog instanceof Object); // true
+  console.log('6', p1 instanceof Object); // true
 
   console.log('7', Function.prototype.__proto__ === Object.prototype); // true
   console.log('8', Object.prototype.__proto__ === Function.prototype); // false

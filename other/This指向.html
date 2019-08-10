@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>This指向</title>
+</head>
+
+<body>
+  <script>
+    var a = 1
+    var obj = {
+      a: 2,
+      b: function () {
+        console.log('Common:', this.a);
+        console.log('this === obj', this === obj);
+      },
+      c: () => {
+        console.log('Arrow:', this.a);
+        console.log('this === window', this === window);
+      }
+    }
+    obj.b()
+    obj.c()
+  </script>
+</body>
+
+</html>
