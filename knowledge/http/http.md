@@ -38,7 +38,12 @@
   3 使用报头压缩：将所有的信息字段建立一张表，为表中的每个字段建立索引，客户端和服务端共同使用这个表，他们之间就以索引号来表示信息字段
   4 服务器推送：允许服务器未经请求，主动向客户端发送资源
 
+## WebSocket
+
+1.
+
 ## TCP/IP
+
 https://www.cnblogs.com/buxiangxin/p/8336022.html
 
 - 定义
@@ -49,71 +54,77 @@ TCP/IP 是用于因特网 (Internet) 的计算机通信协议。
 - 三次握手
 
 详细的理论：
-1. Client：
+
+1.  Client：
     SYN=1
     seq=j
-    Client状态=SYN_SENT
-2. Server：
-    确认SYN=1？
+    Client 状态=SYN_SENT
+2.  Server：
+    确认 SYN=1？
     SYN=1
     ACK=1
     ack=j+1
     seq=k
-    Server状态=SYN_RCVD
-3. Client：
-    确认ack=j+1？
-    确认ACK=1？
+    Server 状态=SYN_RCVD
+3.  Client：
+    确认 ack=j+1？
+    确认 ACK=1？
     ACK=1
     ack=k+1
-4. Server：
-    确认ack=k+1？
-    Client、Server状态=ESTABLISHED
+4.  Server：
+    确认 ack=k+1？
+    Client、Server 状态=ESTABLISHED
 
 简洁的理论：
-1. Client发送SYN包
-2. Server确认SYN包，发送SYN+ACK包
-3. Client确认SYN+ACK包，发送ACK包
+
+1.  Client 发送 SYN 包
+2.  Server 确认 SYN 包，发送 SYN+ACK 包
+3.  Client 确认 SYN+ACK 包，发送 ACK 包
 
 抽象的举例：
-1. A：Hi美女，你好，你叫什么名字？。
-2. B：你好，我叫xxx，你呢？。
-3. A：我叫yyy，很高兴认识你。
+
+1.  A：Hi 美女，你好，你叫什么名字？。
+2.  B：你好，我叫 xxx，你呢？。
+3.  A：我叫 yyy，很高兴认识你。
 
 - 四次挥手
 
 详细的理论：
-1. Client：
+
+1.  Client：
     Fin=1
     seq=m
-    Client状态=FIN_WAIT_1
-2. Server:
-    确认Fin=1？
+    Client 状态=FIN_WAIT_1
+2.  Server:
+    确认 Fin=1？
     ack=m+1
-    Server状态=CLOSE_WAIT
-3. Server:
+    Server 状态=CLOSE_WAIT
+    Client 状态=FIN_WAIT_2
+3.  Server:
     Fin=1
     seq=n
-    Server状态=LAST_ACK
-4. Client：
-    确认Fin=1？
+    Server 状态=LAST_ACK
+4.  Client：
+    确认 Fin=1？
     ack=n+1
-    Client状态=TIME_WAIT
-5. Server：
-    确认ack=n+1？
-    Server状态=CLOSED
-
+    Client 状态=TIME_WAIT
+5.  Server：
+    确认 ack=n+1？
+    Server 状态=CLOSED
 
 简洁的理论：
-1. Client发送Fin包
-2. Server确认Fin包，发送ACK包
-3. Server发送Fin包
-4. Client确认Fin包
+
+1.  Client 发送 Fin 包
+2.  Server 确认 Fin 包，发送 ACK 包
+3.  Server 发送 Fin 包
+4.  Client 确认 Fin 包
 
 抽象的举例：
-1. A：我要走了。
-2. B：好的，我知道了，你稍等一下。
-3. B：这时我的电话，以后再联系吧，再见啦。
-4. A：好的，我保存好了，再见。
+
+1.  A：我要走了。
+2.  B：好的，我知道了，你稍等一下。
+3.  B：这时我的电话，以后再联系吧，再见啦。
+4.  A：好的，我保存好了，再见。
 
 ## https
 
@@ -123,24 +134,28 @@ HTTPS 是身披 SSL 外壳的 HTTP
 经由 HTTP 进行通信，在 HTTP 和 TCP 之间添加一个安全协议层（SSL 或 TSL），这个时候，就成了我们常说的 HTTPS。
 HTTPS 使用的主要目的是`提供对网站服务器的身份认证`，同时`保护交换数据的隐私与完整性`。
 
-- SSL原理
-1. Client请求https链接
-2. Server发送（CA证书，公钥）
-3. Client验证 CA 有效性
-4. Client生成 随机密钥
-5. Client使用 公钥 对 随机密钥 加密，并发送至Server
-6. Server使用 私钥 对 随机密钥 解密，得到 对称密钥
-7. Client和Server共同使用 对称密钥 进行 密文通信
+- SSL 原理
+
+1.  Client 请求 https 链接
+2.  Server 发送（CA 证书，公钥）
+3.  Client 验证 CA 有效性
+4.  Client 生成 随机密钥
+5.  Client 使用 公钥 对 随机密钥 加密，并发送至 Server
+6.  Server 使用 私钥 对 随机密钥 解密，得到 对称密钥
+7.  Client 和 Server 共同使用 对称密钥 进行 密文通信
 
 - https 与 http 的区别
 
-1. HTTPS 是加密传输协议，HTTP 是明文传输协议;
-2. HTTPS 需要用到 SSL 证书，而 HTTP 不用;
-3. HTTPS 比 HTTP 更加安全，对搜索引擎更友好，利于 SEO;
-4. HTTPS 标准端口 443，HTTP 标准端口 80;
-5. HTTPS 基于传输层，HTTP 基于应用层;
+1.  HTTPS 是加密传输协议，HTTP 是明文传输协议;
+2.  HTTPS 需要用到 SSL 证书，而 HTTP 不用;
+3.  HTTPS 比 HTTP 更加安全，对搜索引擎更友好，利于 SEO;
+4.  HTTPS 标准端口 443，HTTP 标准端口 80;
+5.  HTTPS 基于传输层，HTTP 基于应用层;
+
+- https 与 charles 抓包
 
 ## http 状态码
+
 https://www.cnblogs.com/yzxing/p/9665109.html
 
 分类：
