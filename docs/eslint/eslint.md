@@ -6,7 +6,7 @@
 
 1.  可以直接添加到 package.json 中的 eslintConfig 字段中
 
-```
+```json
 "eslintConfig": {
   "root": true, // 此项是用来告诉eslint找当前配置文件不能往父级查找
   "env": {
@@ -27,16 +27,16 @@
 
 2.  在 package.json 同级下创建 .eslintrc.js 文件
 
-```
+```js
 // .eslintrc.js
 module.exports = {
   // ...
-}
+};
 ```
 
 ## 规则字段 rules
 
-```
+```js
 rules: {
   "规则名": [规则值, 规则配置]
 }

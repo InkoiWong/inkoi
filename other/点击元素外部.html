@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <style>
+    #test {
+      width: 100px;
+      height: 40px;
+      background-color: green;
+      cursor: pointer;
+    }
+  </style>
+  <div id="test"></div>
+</body>
+
+<script>
+  var div = document.getElementById('test');
+
+  document.addEventListener('click', function (event) {
+    console.log('点击了document');
+    event = event || window.event;
+    div.style.display = "none";
+    // event.stopPropagation();
+  })
+  div.addEventListener('click', function (event) {
+    console.log('点击了div');
+    event = event || window.event;
+    // div.style.display = "block";
+    event.stopPropagation();
+  })
+</script>
+
+</html>
