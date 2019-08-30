@@ -22,17 +22,17 @@ export const constantRouterMap = [
       {
         name: 'login',
         path: 'login',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login')
+        component: () => import(/* webpackChunkName: "Login" */ '@/views/user/Login')
       },
       {
         name: 'register',
         path: 'register',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Register')
+        component: () => import(/* webpackChunkName: "Register" */ '@/views/user/Register')
       },
       {
         name: 'registerResult',
         path: 'register-result',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/RegisterResult')
+        component: () => import(/* webpackChunkName: "RegisterResult" */ '@/views/user/RegisterResult')
       }
     ]
   },
@@ -52,7 +52,7 @@ export const constantRouterMap = [
 
   {
     path: '/404',
-    component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')
+    component: () => import(/* webpackChunkName: "NotFound" */ '@/views/exception/404')
   }
 ]
 
