@@ -31,3 +31,9 @@ winpty vue.cmd create vue_ant_cms
 ## 前后端分离 mock
 
 1.  [请求拦截](src\mock\index.js)
+
+## 第三方库
+
+1.  [ant-design](src\core\use\ant-design.js)
+2.  [vue-ls](src\core\use\vue-ls.js)
+3.  [vue-progressbar](src\utils\mixin\vue-progressbar.js)

@@ -1,3 +1,10 @@
+const path = require('path')
+// const webpack = require('webpack')
+
+function resolve (dir) {
+  return path.join(__dirname, dir)
+}
+
 const devServer = require('./vue-config/devServer.config')
 // const mutiPageConfig = require('./multiPage.config')
 
@@ -187,7 +194,17 @@ module.exports = {
    *
    * 是一个函数，会接收一个基于 webpack-chain 的 ChainableConfig 实例。允许对内部的 webpack 配置进行更细粒度的修改。
    */
-  chainWebpack: config => {},
+  chainWebpack: config => {
+    config.resolve.alias
+      .set('@$', resolve('src'))
+      .set('@views', resolve('src/views')) // 路由
+      .set('@api', resolve('src/api')) // 接口
+      .set('@assets', resolve('src/assets')) // 资源
+      .set('@components', resolve('src/components')) // 组件
+      .set('@layouts', resolve('src/layouts')) // 布局
+      .set('@static', resolve('src/static')) // 静态资源
+      .set('@utils', resolve('src/utils')) // 工具资源
+  },
 
   /**
    * webpack-dev-server 相关配置
