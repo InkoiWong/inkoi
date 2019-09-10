@@ -3,11 +3,11 @@
  * @desc    提供了用于处理文件和目录路径的实用程序
  *          https://www.npmjs.com/package/path
  */
-const path = require('path')
-console.log('%s', '\033[1H]\033[2J')
+const path = require('path');
+console.log('%s', '\033[1H]\033[2J');
 // ---------------
 
-const testPathStr = './../test/sub1/aaa.html'
+const testPathStr = './../test/sub1/aaa.html';
 
 /**
  * @member  path.basename（path [，ext]）
@@ -39,9 +39,18 @@ console.log('path.extname:', path.extname(testPathStr));
  *          TypeError如果path不是字符串，则抛出A.
  */
 console.log('path.parse:', path.parse(testPathStr));
-console.log('path.parse.base === path.basename:', path.parse(testPathStr).base === path.basename(testPathStr));
-console.log('path.parse.dir === path.dirname:', path.parse(testPathStr).dir === path.dirname(testPathStr));
-console.log('path.parse.ext === path.extname:', path.parse(testPathStr).ext === path.extname(testPathStr));
+console.log(
+  'path.parse.base === path.basename:',
+  path.parse(testPathStr).base === path.basename(testPathStr)
+);
+console.log(
+  'path.parse.dir === path.dirname:',
+  path.parse(testPathStr).dir === path.dirname(testPathStr)
+);
+console.log(
+  'path.parse.ext === path.extname:',
+  path.parse(testPathStr).ext === path.extname(testPathStr)
+);
 
 /**
  * @member  path.format（pathObject）
@@ -50,7 +59,7 @@ console.log('path.parse.ext === path.extname:', path.parse(testPathStr).ext === 
 const textPathObj = {
   dir: '.\\test\\sub1',
   base: 'aaa.html'
-}
+};
 console.log('path.format:', path.format(textPathObj));
 
 /**
@@ -63,10 +72,16 @@ console.log('path.format:', path.format(textPathObj));
  *          ps：下面例子中的'..'把 eee 路径返回了，所以ddd接的fff
  */
 console.log('path.join:', path.join('aaa', 'bbb/', '/ccc', '/ddd/', 'eee'));
-console.log('path.join:', path.join('/aaa', 'bbb', 'ccc/ddd', 'eee', '..'))
-console.log('path.join:', path.join('/aaa', 'bbb', 'ccc/ddd', 'eee', '.'))
-console.log('path.join:', path.join('/aaa', 'bbb', 'ccc/ddd', 'eee', '..', 'fff'))
-console.log('path.join:', path.join('/aaa', 'bbb', 'ccc/ddd', 'eee', '.', 'fff'))
+console.log('path.join:', path.join('/aaa', 'bbb', 'ccc/ddd', 'eee', '..'));
+console.log('path.join:', path.join('/aaa', 'bbb', 'ccc/ddd', 'eee', '.'));
+console.log(
+  'path.join:',
+  path.join('/aaa', 'bbb', 'ccc/ddd', 'eee', '..', 'fff')
+);
+console.log(
+  'path.join:',
+  path.join('/aaa', 'bbb', 'ccc/ddd', 'eee', '.', 'fff')
+);
 
 /**
  * @member  path.isAbsolute（path）
@@ -83,8 +98,8 @@ console.log('path.join:', path.join('/aaa', 'bbb', 'ccc/ddd', 'eee', '.', 'fff')
  * @member  path.relative（from，to）
  *          从 from 到 to 的相对位置
  */
-const str1 = './../test/sub1/aaa.html'
-const str2 = './../test/sub2/eee.md'
+const str1 = './../test/sub1/aaa.html';
+const str2 = './../test/sub2/eee.md';
 console.log('path.relative:', path.relative(str1, str2));
 
 /**
@@ -96,7 +111,10 @@ console.log('path.relative:', path.relative(str1, str2));
 console.log('path.resolve:', path.resolve());
 console.log('path.resolve:', path.resolve('/foo/bar', './baz'));
 console.log('path.resolve:', path.resolve('/foo/bar', '/tmp/file/'));
-console.log('path.resolve:', path.resolve('wwwroot', 'static_files/png/', '../gif/image.gif'));
+console.log(
+  'path.resolve:',
+  path.resolve('wwwroot', 'static_files/png/', '../gif/image.gif')
+);
 
 /**
  * @member  path.sep

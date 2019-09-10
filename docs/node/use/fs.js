@@ -8,11 +8,11 @@
  *
  *          同时可以使用常规函数和Promise函数
  */
-const fs = require('fs')
-console.log('%s', '\033[1H]\033[2J')
+const fs = require('fs');
+console.log('%s', '\033[1H]\033[2J');
 // ---------------
 
-let file = './../test/sub1/ccc.js'
+let file = './../test/sub1/ccc.js';
 
 /**
  * @member  fs.constants
@@ -60,7 +60,7 @@ let file = './../test/sub1/ccc.js'
  * @member  fs.stat(path[, options], callback(err, stat))
  *          读取文件状态
  *
- *          只允许才不操作文件的情况下才使用此方法，如果需要读写的话，直接使用 fs.readFile 和 fs.writeFile
+ *          只允许不操作文件的情况下才使用此方法，如果需要读写的话，直接使用 fs.readFile 和 fs.writeFile
  */
 // fs.stat(file, (err, stat) => {
 //   if (err) throw err
