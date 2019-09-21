@@ -1,11 +1,11 @@
-# vue_ant_cms
+# saber_admin_fe
 
 ## 项目创建
 
 ```
-vue create vue_ant_cms
+vue create saber_admin_fe
 或
-winpty vue.cmd create vue_ant_cms
+winpty vue.cmd create saber_admin_fe
 ```
 
 ## 路由管理器 vue-router
